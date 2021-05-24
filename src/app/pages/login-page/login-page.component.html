@@ -1,0 +1,12 @@
+<div class="wrapper">
+  <div class="login-card">
+    <div class="title-text">Welcome to K-Chat!</div>
+    <form class="login-form" [formGroup]="loginCredentials">
+      <label for="username">Username/Email</label>
+      <input id="username" formControlName="email" type="text" pInputText />
+      <label for="password">Password</label>
+      <p-password id="password" formControlName="password" [feedback]="false"></p-password>
+      <button pButton type="button" label="Login" (click)="login()"></button>
+    </form>
+  </div>
+</div>
