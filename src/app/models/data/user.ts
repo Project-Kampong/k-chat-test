@@ -5,8 +5,8 @@ export interface UserLogin {
 
 export interface UserData {
   email: string;
-  first_name: string;
-  last_name: string;
+  username: string;
+  is_activated: boolean;
   password: string;
   role: string;
   user_id: string;

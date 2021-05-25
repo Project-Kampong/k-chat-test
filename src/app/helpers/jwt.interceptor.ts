@@ -13,7 +13,7 @@ export class JwtInterceptor implements HttpInterceptor {
     if (this.authService.getIsLoggedIn() && this.cookieService.check('token')) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${this.cookieService.get('token')}`,
+          authorization: `Bearer ${this.cookieService.get('token')}`,
         },
       });
     }

@@ -18,6 +18,7 @@ export class LoginPage implements OnInit, OnDestroy {
   loginCredentials = new FormGroup({});
   subscriptions: Subscription[] = [];
   showError: boolean = false;
+  showLoginError: boolean = false;
 
   constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) {}
 
@@ -34,11 +35,26 @@ export class LoginPage implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.authService.loginUser(this.loginCredentials.value).subscribe(
         (res) => {
-          this.showError = false;
-          this.router.navigate(['/home']);
+          this.authService.setToken(res['token']);
+          this.subscriptions.push(
+            this.authService.getLoggedInUserDetails().subscribe(
+              (res) => {
+                this.showError = false;
+                this.showLoginError = false;
+              },
+              (err) => {
+                this.showError = true;
+                this.showLoginError = false;
+              },
+              () => {
+                this.router.navigate(['/home']);
+              },
+            ),
+          );
         },
         (err) => {
-          this.showError = true;
+          this.showError = false;
+          this.showLoginError = true;
         },
       ),
     );
