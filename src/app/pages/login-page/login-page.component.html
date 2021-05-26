@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <div class="login-card">
+  <div id="login-card" class="card fade-card">
     <div class="title-text">Welcome to K-Chat!</div>
     <form class="login-form" [formGroup]="loginCredentials">
       <label for="username">Username/Email</label>
@@ -8,5 +8,10 @@
       <p-password id="password" formControlName="password" [feedback]="false"></p-password>
       <button pButton type="button" label="Login" (click)="login()"></button>
     </form>
+    <div (click)="fadeCard()" class="register-text">No account? Click here to register!</div>
+  </div>
+  <div id="register-card" class="card fade-card fade">
+    <div class="title-text">Register!</div>
+    <div (click)="fadeCard()" class="register-text">Already have an account? Click here to login!</div>
   </div>
 </div>

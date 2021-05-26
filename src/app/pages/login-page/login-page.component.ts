@@ -35,6 +35,15 @@ export class LoginPage implements OnInit, OnDestroy {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
+  fadeCard(): void {
+    const loginCardElement = document.getElementById('login-card');
+    const registerCardElement = document.getElementById('register-card');
+    if (loginCardElement && registerCardElement) {
+      loginCardElement?.classList.toggle('fade');
+      registerCardElement?.classList.toggle('fade');
+    }
+  }
+
   login(): void {
     this.subscriptions.push(
       this.authService.loginUser(this.loginCredentials.value).subscribe(
