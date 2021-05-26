@@ -1,8 +1,6 @@
 <div class="wrapper">
   <div class="login-card">
     <div class="title-text">Welcome to K-Chat!</div>
-    <div *ngIf="showError" class="warning-text">Server Error. Please try again later.</div>
-    <div *ngIf="showLoginError" class="warning-text">Wrong username/password!</div>
     <form class="login-form" [formGroup]="loginCredentials">
       <label for="username">Username/Email</label>
       <input id="username" formControlName="email" type="text" pInputText />

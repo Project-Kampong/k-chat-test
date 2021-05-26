@@ -1,0 +1,9 @@
+@import '../variables.scss';
+
+@media screen and (max-width: $mobile-large) {
+  :host ::ng-deep .custom-toast {
+    width: 90vw;
+    font-size: 12px;
+    line-height: 12px;
+  }
+}

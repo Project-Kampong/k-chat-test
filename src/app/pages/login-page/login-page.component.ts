@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 const userLoginForm = {
   email: new FormControl(''),
@@ -17,10 +18,13 @@ const userLoginForm = {
 export class LoginPage implements OnInit, OnDestroy {
   loginCredentials = new FormGroup({});
   subscriptions: Subscription[] = [];
-  showError: boolean = false;
-  showLoginError: boolean = false;
 
-  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private router: Router,
+    private messageService: MessageService,
+  ) {}
 
   ngOnInit(): void {
     this.loginCredentials = this.fb.group({
@@ -31,7 +35,6 @@ export class LoginPage implements OnInit, OnDestroy {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
-  //Will change to notification service to show error.
   login(): void {
     this.subscriptions.push(
       this.authService.loginUser(this.loginCredentials.value).subscribe(
@@ -39,22 +42,29 @@ export class LoginPage implements OnInit, OnDestroy {
           this.subscriptions.push(
             this.authService.getLoggedInUserDetails().subscribe(
               (res) => {
-                this.showError = false;
-                this.showLoginError = false;
+                this.messageService.add({
+                  severity: 'success',
+                  summary: 'Successfully logged in',
+                  detail: 'Welcome back to K-Chat!',
+                });
+                this.router.navigate(['/home']);
               },
               (err) => {
-                this.showError = true;
-                this.showLoginError = false;
-              },
-              () => {
-                this.router.navigate(['/home']);
+                this.messageService.add({
+                  severity: 'error',
+                  summary: 'Oops! Server currently having problems',
+                  detail: 'Please try again later.',
+                });
               },
             ),
           );
         },
         (err) => {
-          this.showError = false;
-          this.showLoginError = true;
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Wrong username/password',
+            detail: 'Please try again.',
+          });
         },
       ),
     );

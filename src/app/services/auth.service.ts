@@ -6,7 +6,12 @@ import { environment } from '../../environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UserLoginData, UserRegisterData } from '../models/data/auth';
 import { GetResponse } from '../models/data/api';
-import { GetLoggedInUserResponse, LoginUserResponse, LogoutUserResponse, RegisterUserResponse } from '../models/backend-responses/auth';
+import {
+  GetLoggedInUserResponse,
+  LoginUserResponse,
+  LogoutUserResponse,
+  RegisterUserResponse,
+} from '../models/backend-responses/auth';
 import { UserData } from '../models/data/user';
 import { map } from 'rxjs/operators';
 
