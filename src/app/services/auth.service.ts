@@ -42,43 +42,42 @@ export class AuthService {
   }
 
   loginUser(data: UserLoginData): Observable<LoginUserResponse> {
-    return this.httpClient.post<LoginUserResponse>(this.url + 'api/auth/login', data, this.options).pipe((res) => {
-      this.isLoggedIn = true;
-      return res;
-    });
+    return this.httpClient.post<LoginUserResponse>(this.url + 'api/auth/login', data, this.options).pipe(
+      map((res: LoginUserResponse) => {
+        this.isLoggedIn = true;
+        this.cookieService.set('token', res.token);
+        return res;
+      }),
+    );
   }
 
   registerUser(data: UserRegisterData): Observable<RegisterUserResponse> {
-    return this.httpClient
-      .post<RegisterUserResponse>(this.url + 'api/auth/register', data, this.options)
-      .pipe((res: Observable<RegisterUserResponse>) => {
+    return this.httpClient.post<RegisterUserResponse>(this.url + 'api/auth/register', data, this.options).pipe(
+      map((res: RegisterUserResponse) => {
         this.isLoggedIn = true;
+        this.cookieService.set('token', res.token);
         return res;
-      });
+      }),
+    );
   }
 
   getLoggedInUserDetails(): Observable<GetLoggedInUserResponse> {
     return this.httpClient.get<GetLoggedInUserResponse>(this.url + 'api/auth/me').pipe(
       map((res: GetLoggedInUserResponse) => {
-        this.currentUserDataSubject.next(res['data']);
+        this.currentUserDataSubject.next(res.data);
         return res;
       }),
     );
   }
 
   logoutUser(): Observable<LogoutUserResponse> {
-    return this.httpClient.get<GetResponse>(this.url + 'api/auth/logout').pipe((res) => {
-      this.isLoggedIn = false;
-      this.currentUserDataSubject.next(<UserData>{});
-      return res;
-    });
-  }
-
-  deleteToken(): void {
-    this.cookieService.delete('token', '/');
-  }
-
-  setToken(token: string): void {
-    this.cookieService.set('token', token);
+    return this.httpClient.get<GetResponse>(this.url + 'api/auth/logout').pipe(
+      map((res: GetResponse) => {
+        this.isLoggedIn = false;
+        this.cookieService.delete('token');
+        this.currentUserDataSubject.next(<UserData>{});
+        return res;
+      }),
+    );
   }
 }

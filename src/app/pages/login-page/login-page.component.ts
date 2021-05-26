@@ -31,11 +31,11 @@ export class LoginPage implements OnInit, OnDestroy {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
+  //Will change to notification service to show error.
   login(): void {
     this.subscriptions.push(
       this.authService.loginUser(this.loginCredentials.value).subscribe(
         (res) => {
-          this.authService.setToken(res['token']);
           this.subscriptions.push(
             this.authService.getLoggedInUserDetails().subscribe(
               (res) => {
