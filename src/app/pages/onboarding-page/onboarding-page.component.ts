@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'onboarding-page',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class OnboardingPage {
   isActivateMessageDisplayed: boolean = true;
+
+  constructor(private router: Router) {}
+
+  routeToHome(): void {
+    this.router.navigate(['/home']);
+  }
 }

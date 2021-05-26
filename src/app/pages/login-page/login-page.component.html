@@ -8,7 +8,7 @@
       <p-password id="password" formControlName="password" [feedback]="false"></p-password>
       <button pButton type="button" label="Login" (click)="login()"></button>
     </form>
-    <div (click)="fadeCard()" class="register-text">No account? Click here to register!</div>
+    <div (click)="fadeCard()" class="switch-text">No account? Click here to register!</div>
   </div>
   <div id="register-card" class="card fade-card fade">
     <div class="title-text">Register today!</div>
@@ -23,6 +23,6 @@
       <p-password id="confirm-password" formControlName="confirmPassword" [feedback]="false"></p-password>
       <button [disabled]="!isRegisterFormValid()" pButton type="button" label="Register" (click)="register()"></button>
     </form>
-    <div (click)="fadeCard()" class="register-text">Already have an account? Click here to login!</div>
+    <div (click)="fadeCard()" class="switch-text">Already have an account? Click here to login!</div>
   </div>
 </div>

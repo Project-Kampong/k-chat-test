@@ -1,11 +1,14 @@
 <div>This is the onboarding page.</div>
+<button pButton type="button" label="Home" (click)="routeToHome()"></button>
 <p-dialog
-  header="Header"
+  header="Email Verification"
   [(visible)]="isActivateMessageDisplayed"
   [modal]="true"
-  [style]="{ width: '50vw' }"
+  [style]="{ width: '90vw' }"
   [baseZIndex]="10000"
   [draggable]="false"
   [resizable]="false"
 >
+  Welcome to K-Chat! In order to access all our features, please ensure that you activate your account via the email
+  that we just sent you.
 </p-dialog>

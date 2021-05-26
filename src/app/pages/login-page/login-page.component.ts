@@ -60,6 +60,11 @@ export class LoginPage implements OnInit, OnDestroy {
     );
   }
 
+  /* For testing purposes, do not delete. */
+  registerTest(): void {
+    this.router.navigate(['/onboarding']);
+  }
+
   register(): void {
     this.subscriptions.push(
       this.authService.registerUser(this.registerCredentials.value).subscribe(
