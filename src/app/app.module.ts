@@ -20,9 +20,11 @@ import { PasswordModule } from 'primeng/password';
 import { ToastModule } from 'primeng/toast';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { DialogModule } from 'primeng/dialog';
+import { OnboardingPage } from './pages/onboarding-page/onboarding-page.component';
 
 @NgModule({
-  declarations: [AppComponent, MainPage, HomePage, ChatPage, LoginPage],
+  declarations: [AppComponent, MainPage, HomePage, ChatPage, LoginPage, OnboardingPage],
   imports: [
     ReactiveFormsModule,
     BrowserModule,
@@ -34,6 +36,7 @@ import { MessageService } from 'primeng/api';
     FormsModule,
     PasswordModule,
     ToastModule,
+    DialogModule,
   ],
   providers: [
     {

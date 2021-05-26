@@ -2,8 +2,8 @@
   <div id="login-card" class="card fade-card">
     <div class="title-text">Welcome to K-Chat!</div>
     <form class="login-form" [formGroup]="loginCredentials">
-      <label for="username">Username/Email</label>
-      <input id="username" formControlName="email" type="text" pInputText />
+      <label for="username-login">Email</label>
+      <input id="username-login" formControlName="email" type="text" pInputText />
       <label for="password">Password</label>
       <p-password id="password" formControlName="password" [feedback]="false"></p-password>
       <button pButton type="button" label="Login" (click)="login()"></button>
@@ -11,7 +11,18 @@
     <div (click)="fadeCard()" class="register-text">No account? Click here to register!</div>
   </div>
   <div id="register-card" class="card fade-card fade">
-    <div class="title-text">Register!</div>
+    <div class="title-text">Register today!</div>
+    <form class="register-form" [formGroup]="registerCredentials">
+      <label for="username-register">Username</label>
+      <input id="username-register" formControlName="username" type="text" pInputText />
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" type="text" pInputText />
+      <label for="password">Password</label>
+      <p-password id="password" formControlName="password"></p-password>
+      <label for="confirm-password">Re-Password</label>
+      <p-password id="confirm-password" formControlName="confirmPassword" [feedback]="false"></p-password>
+      <button [disabled]="!isRegisterFormValid()" pButton type="button" label="Register" (click)="register()"></button>
+    </form>
     <div (click)="fadeCard()" class="register-text">Already have an account? Click here to login!</div>
   </div>
 </div>

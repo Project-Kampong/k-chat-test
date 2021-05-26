@@ -4,11 +4,13 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-
-const userLoginForm = {
-  email: new FormControl(''),
-  password: new FormControl(''),
-};
+import { LoginForm } from '../../forms/login';
+import { RegisterForm } from '../../forms/register';
+import {
+  GetLoggedInUserResponse,
+  LoginUserResponse,
+  RegisterUserResponse,
+} from 'src/app/models/backend-responses/auth';
 
 @Component({
   selector: 'login-page',
@@ -16,7 +18,8 @@ const userLoginForm = {
   styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPage implements OnInit, OnDestroy {
-  loginCredentials = new FormGroup({});
+  loginCredentials: FormGroup = new FormGroup({});
+  registerCredentials: FormGroup = new FormGroup({});
   subscriptions: Subscription[] = [];
 
   constructor(
@@ -27,30 +30,78 @@ export class LoginPage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.loginCredentials = this.fb.group({
-      ...userLoginForm,
-    });
+    this.loginCredentials = this.fb.group({ ...LoginForm });
+    this.registerCredentials = this.fb.group({ ...RegisterForm });
   }
+
   ngOnDestroy(): void {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
   fadeCard(): void {
-    const loginCardElement = document.getElementById('login-card');
-    const registerCardElement = document.getElementById('register-card');
+    const loginCardElement: HTMLElement | null = document.getElementById('login-card');
+    const registerCardElement: HTMLElement | null = document.getElementById('register-card');
     if (loginCardElement && registerCardElement) {
       loginCardElement?.classList.toggle('fade');
       registerCardElement?.classList.toggle('fade');
     }
   }
 
+  checkSamePassword(): boolean {
+    return this.registerCredentials.get('password')?.value === this.registerCredentials.get('confirmPassword')?.value;
+  }
+
+  isRegisterFormValid(): boolean {
+    return (
+      this.registerCredentials.get('username')?.errors === null &&
+      this.registerCredentials.get('email')?.errors === null &&
+      this.registerCredentials.get('password')?.errors === null &&
+      this.checkSamePassword()
+    );
+  }
+
+  register(): void {
+    this.subscriptions.push(
+      this.authService.registerUser(this.registerCredentials.value).subscribe(
+        (res: RegisterUserResponse) => {
+          this.subscriptions.push(
+            this.authService.getLoggedInUserDetails().subscribe(
+              (res: GetLoggedInUserResponse) => {
+                this.messageService.add({
+                  severity: 'success',
+                  summary: 'Successfully Registered!',
+                  detail: 'Welcome to K-Chat!',
+                });
+                this.router.navigate(['/onboarding']);
+              },
+              (err) => {
+                this.messageService.add({
+                  severity: 'error',
+                  summary: 'Oops! Server currently having problems',
+                  detail: 'Please try again later.',
+                });
+              },
+            ),
+          );
+        },
+        (err) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Oops! Something went wrong!',
+            detail: 'Please try again.',
+          });
+        },
+      ),
+    );
+  }
+
   login(): void {
     this.subscriptions.push(
       this.authService.loginUser(this.loginCredentials.value).subscribe(
-        (res) => {
+        (res: LoginUserResponse) => {
           this.subscriptions.push(
             this.authService.getLoggedInUserDetails().subscribe(
-              (res) => {
+              (res: GetLoggedInUserResponse) => {
                 this.messageService.add({
                   severity: 'success',
                   summary: 'Successfully logged in',
