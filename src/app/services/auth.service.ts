@@ -3,11 +3,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { OptionObject } from '../models/system/headers';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { UserLoginData, UserRegisterData } from '../models/data/auth';
 import { GetResponse } from '../models/data/api';
 import { GetLoggedInUserResponse, LoginUserResponse, LogoutUserResponse, RegisterUserResponse } from '../models/backend-responses/auth';
 import { UserData } from '../models/data/user';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -19,17 +20,25 @@ export class AuthService {
       'Content-Type': 'application/json',
     }),
   };
-  private userData: UserData = <UserData>{};
+  private currentUserDataSubject: BehaviorSubject<UserData>;
+  private currentUserData: Observable<UserData>;
   private isLoggedIn: boolean = false;
 
-  constructor(private httpClient: HttpClient, private cookieService: CookieService) {}
+  constructor(private httpClient: HttpClient, private cookieService: CookieService) {
+    this.currentUserDataSubject = new BehaviorSubject<UserData>(<UserData>{});
+    this.currentUserData = this.currentUserDataSubject.asObservable();
+  }
 
-  getUserData(): UserData {
-    return this.userData;
+  getCurrentUserData(): UserData {
+    return this.currentUserDataSubject.value;
   }
 
   getIsLoggedIn(): boolean {
     return this.isLoggedIn;
+  }
+
+  getCurrentUserDataObservable(): Observable<UserData> {
+    return this.currentUserData;
   }
 
   loginUser(data: UserLoginData): Observable<LoginUserResponse> {
@@ -49,16 +58,18 @@ export class AuthService {
   }
 
   getLoggedInUserDetails(): Observable<GetLoggedInUserResponse> {
-    return this.httpClient.get<GetLoggedInUserResponse>(this.url + 'api/auth/me').pipe((res) => {
-      this.userData = res['data'];
-      return res;
-    });
+    return this.httpClient.get<GetLoggedInUserResponse>(this.url + 'api/auth/me').pipe(
+      map((res: GetLoggedInUserResponse) => {
+        this.currentUserDataSubject.next(res['data']);
+        return res;
+      }),
+    );
   }
 
   logoutUser(): Observable<LogoutUserResponse> {
     return this.httpClient.get<GetResponse>(this.url + 'api/auth/logout').pipe((res) => {
       this.isLoggedIn = false;
-      this.userData = <UserData>{};
+      this.currentUserDataSubject.next(<UserData>{});
       return res;
     });
   }

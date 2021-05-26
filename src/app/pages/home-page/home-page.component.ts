@@ -9,6 +9,6 @@ import { AuthService } from 'src/app/services/auth.service';
 export class HomePage implements OnInit {
   constructor(private authService: AuthService) {}
   ngOnInit(): void {
-    console.log(this.authService.getUserData());
+    console.log(this.authService.getCurrentUserData());
   }
 }
