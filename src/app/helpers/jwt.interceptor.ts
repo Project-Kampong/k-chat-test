@@ -10,7 +10,7 @@ export class JwtInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService, private cookieService: CookieService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (this.authService.getIsLoggedIn() && this.cookieService.check('token')) {
+    if (this.cookieService.check('token')) {
       request = request.clone({
         setHeaders: {
           authorization: `Bearer ${this.cookieService.get('token')}`,

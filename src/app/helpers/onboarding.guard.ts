@@ -9,11 +9,7 @@ export class OnboardingGuard implements CanActivate {
   constructor(private router: Router, private authService: AuthService, private cookieService: CookieService) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (
-      !this.authService.getCurrentUserData().is_activated &&
-      this.authService.getIsLoggedIn() &&
-      this.cookieService.check('token')
-    ) {
+    if (!this.authService.getCurrentUserData().is_activated) {
       return true;
     }
     this.router.navigate(['/home']);

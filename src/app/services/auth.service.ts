@@ -27,19 +27,17 @@ export class AuthService {
   };
   private currentUserDataSubject: BehaviorSubject<UserData>;
   private currentUserData: Observable<UserData>;
-  private isLoggedIn: boolean = false;
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService) {
-    this.currentUserDataSubject = new BehaviorSubject<UserData>(<UserData>{});
+    const userData: string | null = localStorage.getItem('userData');
+    this.currentUserDataSubject = userData
+      ? new BehaviorSubject<UserData>(JSON.parse(userData))
+      : new BehaviorSubject<UserData>(<UserData>{});
     this.currentUserData = this.currentUserDataSubject.asObservable();
   }
 
   getCurrentUserData(): UserData {
     return this.currentUserDataSubject.value;
-  }
-
-  getIsLoggedIn(): boolean {
-    return this.isLoggedIn;
   }
 
   getCurrentUserDataObservable(): Observable<UserData> {
@@ -49,7 +47,6 @@ export class AuthService {
   loginUser(data: UserLoginData): Observable<LoginUserResponse> {
     return this.httpClient.post<LoginUserResponse>(this.url + 'api/auth/login', data, this.options).pipe(
       map((res: LoginUserResponse) => {
-        this.isLoggedIn = true;
         this.cookieService.set('token', res.token);
         return res;
       }),
@@ -59,7 +56,6 @@ export class AuthService {
   registerUser(data: UserRegisterData): Observable<RegisterUserResponse> {
     return this.httpClient.post<RegisterUserResponse>(this.url + 'api/auth/register', data, this.options).pipe(
       map((res: RegisterUserResponse) => {
-        this.isLoggedIn = true;
         this.cookieService.set('token', res.token);
         return res;
       }),
@@ -69,6 +65,7 @@ export class AuthService {
   getLoggedInUserDetails(): Observable<GetLoggedInUserResponse> {
     return this.httpClient.get<GetLoggedInUserResponse>(this.url + 'api/auth/me').pipe(
       map((res: GetLoggedInUserResponse) => {
+        localStorage.setItem('userData', JSON.stringify(res.data));
         this.currentUserDataSubject.next(res.data);
         return res;
       }),
@@ -78,7 +75,7 @@ export class AuthService {
   logoutUser(): Observable<LogoutUserResponse> {
     return this.httpClient.get<GetResponse>(this.url + 'api/auth/logout').pipe(
       map((res: GetResponse) => {
-        this.isLoggedIn = false;
+        localStorage.removeItem('userData');
         this.cookieService.delete('token');
         this.currentUserDataSubject.next(<UserData>{});
         return res;
