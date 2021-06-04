@@ -6,7 +6,7 @@ import { LogoutUserResponse } from 'src/app/models/backend-responses/auth';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'home-page',
+  selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })

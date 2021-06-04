@@ -7,7 +7,7 @@ import { ChatroomPreview } from 'src/app/models/data/chat';
 import { ChatService } from 'src/app/services/chat.service';
 
 @Component({
-  selector: 'chat-page',
+  selector: 'app-chat-page',
   templateUrl: './chat-page.component.html',
   styleUrls: ['./chat-page.component.scss'],
 })
