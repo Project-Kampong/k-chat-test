@@ -23,6 +23,7 @@ export class ChatPage implements OnInit, OnDestroy {
       this.chatService.getUserChatrooms().subscribe(
         (res: GetUserChatroomsResponse) => {
           this.chatroomPreviews = res.data;
+          console.log(this.chatroomPreviews);
         },
         (err) => {
           this.messageService.add({
@@ -37,5 +38,9 @@ export class ChatPage implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
+  }
+
+  routeToHome(): void {
+    this.router.navigate(['/home']);
   }
 }

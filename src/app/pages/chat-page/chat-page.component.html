@@ -1,6 +1,8 @@
-<div class="wrapper">
-  <div class="preview-div">
-    <div class="preview-list" *ngFor="let chatroomPreview of chatroomPreviews">
+<button pButton type="button" label="Back" (click)="routeToHome()"></button>
+<div class="preview-div">
+  <div class="preview-list">
+    <div class="divider"></div>
+    <div *ngFor="let chatroomPreview of chatroomPreviews">
       <chatroom-preview [chatroomPreviewData]="chatroomPreview"></chatroom-preview>
     </div>
   </div>
