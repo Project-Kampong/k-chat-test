@@ -1,0 +1,20 @@
+.container {
+  height: 100vh;
+}
+
+.p-grid {
+  height: 100%;
+
+  .align-vertical-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .question-container {
+    height: 100%;
+    padding: 10px;
+    background-color: gray;
+  }
+}

@@ -7,6 +7,7 @@ import { HomePage } from './pages/home-page/home-page.component';
 import { LoginPage } from './pages/login-page/login-page.component';
 import { MainPage } from './pages/main-page/main-page.component';
 import { OnboardingPage } from './pages/onboarding-page/onboarding-page.component';
+import { QaPageComponent } from './pages/qa-page/qa-page.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
     path: 'onboarding',
     component: OnboardingPage,
     canActivate: [OnboardingGuard],
+  },
+  {
+    path: 'qa',
+    component: QaPageComponent,
   },
   {
     path: '**',
