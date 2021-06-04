@@ -7,5 +7,6 @@ import { ChatroomPreview } from 'src/app/models/data/chat';
   styleUrls: ['./chatroom-preview.component.scss'],
 })
 export class ChatroomPreviewComponent {
+  @Input() routeToChatWindow: Function = () => true;
   @Input() chatroomPreviewData: ChatroomPreview = <ChatroomPreview>{};
 }

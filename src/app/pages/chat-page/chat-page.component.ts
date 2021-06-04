@@ -12,6 +12,7 @@ import { ChatService } from 'src/app/services/chat.service';
   styleUrls: ['./chat-page.component.scss'],
 })
 export class ChatPage implements OnInit, OnDestroy {
+  chatId: string = '';
   subscriptions: Subscription[] = [];
   chatroomPreviews: ChatroomPreview[] = [];
 
@@ -19,11 +20,12 @@ export class ChatPage implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     window.scroll(0, 0);
+    this.checkWindowSize();
+    this.routeToChatWindow = this.routeToChatWindow.bind(this);
     this.subscriptions.push(
       this.chatService.getUserChatrooms().subscribe(
         (res: GetUserChatroomsResponse) => {
           this.chatroomPreviews = res.data;
-          console.log(this.chatroomPreviews);
         },
         (err) => {
           this.messageService.add({
@@ -34,6 +36,29 @@ export class ChatPage implements OnInit, OnDestroy {
         },
       ),
     );
+  }
+
+  checkWindowSize(): void {
+    if (window.screen.width < 800) {
+      const chatElement: HTMLElement | null = document.getElementById('chat-div');
+      const previewElement: HTMLElement | null = document.getElementById('preview-div');
+      if (chatElement && previewElement) {
+        if (chatElement.style.display === 'none') {
+          chatElement.style.display = 'block';
+          previewElement.style.display = 'none';
+        } else {
+          chatElement.style.display = 'none';
+          previewElement.style.display = 'block';
+        }
+      }
+    }
+  }
+
+  routeToChatWindow(chatId: string): void {
+    this.chatId = chatId;
+    this.router.navigate(['/chat'], {
+      queryParams: { id: chatId },
+    });
   }
 
   ngOnDestroy(): void {
