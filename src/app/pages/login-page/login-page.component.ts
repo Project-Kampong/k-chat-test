@@ -13,7 +13,7 @@ import {
 } from 'src/app/models/backend-responses/auth';
 
 @Component({
-  selector: 'login-page',
+  selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
 })

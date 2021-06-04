@@ -6,7 +6,7 @@ import { LogoutUserResponse } from 'src/app/models/backend-responses/auth';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'home-page',
+  selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })
@@ -14,9 +14,7 @@ export class HomePage implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   constructor(private authService: AuthService, private router: Router, private messageService: MessageService) {}
 
-  ngOnInit(): void {
-    console.log(this.authService.getCurrentUserData());
-  }
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((sub) => sub.unsubscribe());

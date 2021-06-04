@@ -5,7 +5,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UserLoginData, UserRegisterData } from '../models/data/auth';
-import { GetResponse } from '../models/data/api';
 import {
   GetLoggedInUserResponse,
   LoginUserResponse,
@@ -73,8 +72,8 @@ export class AuthService {
   }
 
   logoutUser(): Observable<LogoutUserResponse> {
-    return this.httpClient.get<GetResponse>(this.url + 'api/auth/logout').pipe(
-      map((res: GetResponse) => {
+    return this.httpClient.get<LogoutUserResponse>(this.url + 'api/auth/logout').pipe(
+      map((res: LogoutUserResponse) => {
         localStorage.removeItem('userData');
         this.cookieService.delete('token');
         this.currentUserDataSubject.next(<UserData>{});
