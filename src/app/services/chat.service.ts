@@ -2,19 +2,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { AuthService } from './auth.service';
-import { GetResponse } from '../models/data/api';
+import { GetChatroomResponse, GetUserChatroomsResponse } from '../models/backend-responses/chat';
 
 interface OptionObject {
   headers: HttpHeaders;
   authorization?: string;
-}
-
-interface MessageRequest {
-  chatroom_id: string;
-  chatmessage_text: string;
-  reply_to?: number;
-  file_links?: string[];
 }
 
 @Injectable({
@@ -28,14 +20,14 @@ export class ChatService {
     }),
   };
 
-  constructor(private httpClient: HttpClient, private authService: AuthService) {}
+  constructor(private httpClient: HttpClient) {}
 
   /**
    * Get all chatrooms for a user
    * @event GET
    */
-  getUserChatrooms(): Observable<GetResponse> {
-    return this.httpClient.get<GetResponse>(this.url + 'api/chatrooms/me');
+  getUserChatrooms(): Observable<GetUserChatroomsResponse> {
+    return this.httpClient.get<GetUserChatroomsResponse>(this.url + 'api/chatrooms/me');
   }
 
   /**
@@ -43,8 +35,8 @@ export class ChatService {
    * @param chatroomId Chatroom ID
    * @event GET
    */
-  getChatroom(chatroomId: string): Observable<GetResponse> {
-    return this.httpClient.get<GetResponse>(this.url + 'api/chatrooms/' + chatroomId);
+  getChatroom(chatroomId: string): Observable<GetChatroomResponse> {
+    return this.httpClient.get<GetChatroomResponse>(this.url + 'api/chatrooms/' + chatroomId);
   }
 
   /**

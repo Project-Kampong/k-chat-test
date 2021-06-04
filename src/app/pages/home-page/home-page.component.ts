@@ -14,9 +14,7 @@ export class HomePage implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   constructor(private authService: AuthService, private router: Router, private messageService: MessageService) {}
 
-  ngOnInit(): void {
-    console.log(this.authService.getCurrentUserData());
-  }
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((sub) => sub.unsubscribe());

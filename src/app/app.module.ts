@@ -22,9 +22,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { DialogModule } from 'primeng/dialog';
 import { OnboardingPage } from './pages/onboarding-page/onboarding-page.component';
+import { ChatroomPreviewComponent } from './components/chatroom-preview/chatroom-preview.component';
 
 @NgModule({
-  declarations: [AppComponent, MainPage, HomePage, ChatPage, LoginPage, OnboardingPage],
+  declarations: [AppComponent, MainPage, HomePage, ChatPage, LoginPage, OnboardingPage, ChatroomPreviewComponent],
   imports: [
     ReactiveFormsModule,
     BrowserModule,

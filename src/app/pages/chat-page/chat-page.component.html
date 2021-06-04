@@ -1,1 +1,7 @@
-<div>This is the chat service.</div>
+<div class="wrapper">
+  <div class="preview-div">
+    <div class="preview-list" *ngFor="let chatroomPreview of chatroomPreviews">
+      <chatroom-preview [chatroomPreviewData]="chatroomPreview"></chatroom-preview>
+    </div>
+  </div>
+</div>
