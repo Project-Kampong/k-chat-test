@@ -1,1 +1,8 @@
-<p>chatroom-window works!</p>
+<div class="wrapper">
+  <div *ngIf="chatId === ''; else chatShow">Please select a chat to start messaging.</div>
+  <ng-template #chatShow>
+    <div>Title Div goes here</div>
+    <div>Chat Window goes here</div>
+    <div>Input goes here</div>
+  </ng-template>
+</div>

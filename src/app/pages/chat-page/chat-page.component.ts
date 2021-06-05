@@ -12,6 +12,7 @@ import { ChatService } from 'src/app/services/chat.service';
   styleUrls: ['./chat-page.component.scss'],
 })
 export class ChatPage implements OnInit, OnDestroy {
+  selectedChatroomPreview: ChatroomPreview = <ChatroomPreview>{};
   chatId: string = '';
   subscriptions: Subscription[] = [];
   chatroomPreviews: ChatroomPreview[] = [];
@@ -59,6 +60,7 @@ export class ChatPage implements OnInit, OnDestroy {
       queryParams: { id: chatId },
     });
     this.checkWindowSize();
+    this.selectedChatroomPreview = this.chatroomPreviews.filter((c) => c.chatroom_id == chatId)[0];
   }
 
   ngOnDestroy(): void {
