@@ -20,7 +20,6 @@ export class ChatPage implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     window.scroll(0, 0);
-    this.checkWindowSize();
     this.routeToChatWindow = this.routeToChatWindow.bind(this);
     this.subscriptions.push(
       this.chatService.getUserChatrooms().subscribe(
@@ -39,11 +38,11 @@ export class ChatPage implements OnInit, OnDestroy {
   }
 
   checkWindowSize(): void {
-    if (window.screen.width < 800) {
+    if (window.screen.width < 768) {
       const chatElement: HTMLElement | null = document.getElementById('chat-div');
       const previewElement: HTMLElement | null = document.getElementById('preview-div');
       if (chatElement && previewElement) {
-        if (chatElement.style.display === 'none') {
+        if (!chatElement.style.display || chatElement.style.display === 'none') {
           chatElement.style.display = 'block';
           previewElement.style.display = 'none';
         } else {
@@ -59,6 +58,7 @@ export class ChatPage implements OnInit, OnDestroy {
     this.router.navigate(['/chat'], {
       queryParams: { id: chatId },
     });
+    this.checkWindowSize();
   }
 
   ngOnDestroy(): void {
