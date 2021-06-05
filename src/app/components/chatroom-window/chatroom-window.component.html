@@ -1,1 +1,39 @@
-<p>chatroom-window works!</p>
+<div class="wrapper">
+  <div *ngIf="chatId === ''; else chatShow">Please select a chat to start messaging.</div>
+  <ng-template #chatShow>
+    <div class="title-div">
+      <img
+        class="chatroom-pic"
+        [src]="
+          chatroomPreviewData.chatroom_pic != null ? chatroomPreviewData.chatroom_pic : '../../assets/kampong-icon.ico'
+        "
+        alt="../../assets/kampong-icon.ico"
+      />
+      <div class="chatroom-name">
+        {{ chatroomPreviewData.chatroom_name ? chatroomPreviewData.chatroom_name : chatroomPreviewData.nickname }}
+      </div>
+    </div>
+    <div class="message-div" id="window">
+      <div class="message-bubble" *ngFor="let m of messages">
+        <div class="message-pic">
+          <img
+            [src]="
+              users[m.user_id].profile_picture ? users[m.user_id].profile_picture : '../../assets/kampong-icon.ico'
+            "
+            alt=""
+          />
+        </div>
+        <div class="message-content">
+          <div class="message-name">{{ users[m.user_id].nickname }}</div>
+          <div class="message-text">{{ m.chatmessage_text }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="input-div">
+      <form id="input-form" (keydown.enter)="sendMessage($event)">
+        <input autocomplete="off" type="text" id="input" name="input" placeholder="Type your message..." />
+      </form>
+      <div class="send-btn-div" (click)="sendMessage($event)">Send</div>
+    </div>
+  </ng-template>
+</div>

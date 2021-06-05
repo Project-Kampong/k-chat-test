@@ -1,4 +1,5 @@
-<button pButton type="button" label="Back" (click)="routeToHome()"></button>
+<button pButton type="button" label="Home" (click)="routeToHome()"></button>
+<button pButton type="button" label="Back" (click)="checkWindowSize()"></button>
 <div class="wrapper">
   <div class="preview-div" id="preview-div">
     <div class="preview-list">
@@ -11,13 +12,7 @@
       </div>
     </div>
   </div>
-  <!-- Should place everything within app-chatroom-window. Do an initial check, if < 768, let's not render, else render-->
-  <div class="chat-div" *ngIf="chatId === ''; else chatshow">
-    <div class="not-selected-div">Please select a chat to start messaging.</div>
+  <div id="chat-div" class="chat-div">
+    <app-chatroom-window [chatroomPreviewData]="selectedChatroomPreview" [chatId]="chatId"></app-chatroom-window>
   </div>
-  <ng-template #chatshow>
-    <div id="chat-div" class="chat-div">
-      <app-chatroom-window></app-chatroom-window>
-    </div>
-  </ng-template>
 </div>

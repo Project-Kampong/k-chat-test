@@ -20,7 +20,7 @@ export interface ChatMessage {
   user_id: string;
   chatmessage_text: string;
   reply_to: string;
-  file_links: string;
+  file_links: string[];
   created_on: string;
   updated_on: string;
 }
@@ -34,4 +34,11 @@ export interface ChatroomUser {
   user_id: string;
   nickname: string;
   profile_picture: string;
+}
+
+export interface MessageRequest {
+  chatroom_id: string;
+  chatmessage_text: string;
+  reply_to?: string;
+  file_links?: string[];
 }
