@@ -46,9 +46,11 @@ export class ChatPage implements OnInit, OnDestroy {
         if (!chatElement.style.display || chatElement.style.display === 'none') {
           chatElement.style.display = 'block';
           previewElement.style.display = 'none';
+          chatElement.style.width = '100%';
         } else {
           chatElement.style.display = 'none';
           previewElement.style.display = 'block';
+          chatElement.style.width = '70%';
         }
       }
     }

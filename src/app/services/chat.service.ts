@@ -2,7 +2,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { GetChatroomResponse, GetUserChatroomsResponse } from '../models/backend-responses/chat';
+import {
+  GetChatroomResponse,
+  GetUserChatroomsResponse,
+  PostChatMessageResponse,
+} from '../models/backend-responses/chat';
+import { MessageRequest } from '../models/data/chat';
 
 interface OptionObject {
   headers: HttpHeaders;
@@ -42,9 +47,8 @@ export class ChatService {
   /**
    * Post a message to a chatroom
    * @param data Chat Message details
-   
-  postMessage(data: MessageRequest): Observable<API> {
-    return this.httpClient.post<API>(this.url + 'api/chatrooms/messages', data, this.authService.getAuthOptions());
+   */
+  postMessage(data: MessageRequest): Observable<PostChatMessageResponse> {
+    return this.httpClient.post<PostChatMessageResponse>(this.url + 'api/chatrooms/messages', data);
   }
-  */
 }
