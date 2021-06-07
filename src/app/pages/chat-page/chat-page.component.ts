@@ -4,7 +4,9 @@ import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { GetUserChatroomsResponse } from 'src/app/models/backend-responses/chat';
 import { ChatroomPreview } from 'src/app/models/data/chat';
+import { AuthService } from 'src/app/services/auth.service';
 import { ChatService } from 'src/app/services/chat.service';
+import { WebsocketService } from 'src/app/services/websocket.service';
 
 @Component({
   selector: 'app-chat-page',
@@ -17,11 +19,18 @@ export class ChatPage implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   chatroomPreviews: ChatroomPreview[] = [];
 
-  constructor(private router: Router, private chatService: ChatService, private messageService: MessageService) {}
+  constructor(
+    private router: Router,
+    private chatService: ChatService,
+    private messageService: MessageService,
+    private websocketService: WebsocketService,
+    private authService: AuthService,
+  ) {}
 
   ngOnInit(): void {
     window.scroll(0, 0);
     this.routeToChatWindow = this.routeToChatWindow.bind(this);
+    this.websocketService.setup(this.authService.getCurrentUserData().user_id);
     this.subscriptions.push(
       this.chatService.getUserChatrooms().subscribe(
         (res: GetUserChatroomsResponse) => {
@@ -58,6 +67,7 @@ export class ChatPage implements OnInit, OnDestroy {
 
   routeToChatWindow(chatId: string): void {
     this.chatId = chatId;
+    this.websocketService.joinChat(chatId);
     this.router.navigate(['/chat'], {
       queryParams: { id: chatId },
     });
