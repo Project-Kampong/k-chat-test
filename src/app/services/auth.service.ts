@@ -24,8 +24,8 @@ export class AuthService {
     this.userId = localStorage.getItem('userId') ? localStorage.getItem('userId') : '';
   }
 
-  getUserId(): string | null {
-    return this.userId;
+  getUserId(): string {
+    return this.userId ? this.userId : '';
   }
 
   loginUser(data: UserLoginData): Observable<LoginUserResponse> {

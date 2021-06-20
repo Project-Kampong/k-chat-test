@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
+import { AuthService } from 'src/app/services/auth.service';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -7,19 +9,12 @@ import { Apollo, gql } from 'apollo-angular';
   styleUrls: ['./profile-page.component.scss'],
 })
 export class ProfilePage implements OnInit {
-  constructor(private apollo: Apollo) {}
+  constructor(private profileService: ProfileService, private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.apollo
-      .watchQuery({
-        query: gql`
-          {
-            users {
-              username
-            }
-          }
-        `,
-      })
-      .valueChanges.subscribe((res) => console.log(res));
+    console.log(this.authService.getUserId());
+    this.profileService.getUserProfileById(this.authService.getUserId()).subscribe((res) => {
+      console.log(res);
+    });
   }
 }
