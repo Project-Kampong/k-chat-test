@@ -16,6 +16,10 @@ export class MainHeaderComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  routeToProfile(): void {
+    this.router.navigate(['/profile']);
+  }
+
   routeToHome(): void {
     this.router.navigate(['/']);
   }

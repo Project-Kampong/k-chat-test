@@ -19,11 +19,6 @@ interface OptionObject {
 })
 export class ChatService {
   private url: string = environment.apiUrl;
-  private options: OptionObject = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-    }),
-  };
 
   constructor(private httpClient: HttpClient) {}
 
@@ -32,7 +27,7 @@ export class ChatService {
    * @event GET
    */
   getUserChatrooms(): Observable<GetUserChatroomsResponse> {
-    return this.httpClient.get<GetUserChatroomsResponse>(this.url + 'api/chatrooms/me');
+    return this.httpClient.get<GetUserChatroomsResponse>(this.url + '/chatrooms/me');
   }
 
   /**
@@ -41,7 +36,7 @@ export class ChatService {
    * @event GET
    */
   getChatroom(chatroomId: string): Observable<GetChatroomResponse> {
-    return this.httpClient.get<GetChatroomResponse>(this.url + 'api/chatrooms/' + chatroomId);
+    return this.httpClient.get<GetChatroomResponse>(this.url + '/chatrooms/' + chatroomId);
   }
 
   /**
@@ -49,6 +44,6 @@ export class ChatService {
    * @param data Chat Message details
    */
   postMessage(data: MessageRequest): Observable<PostChatMessageResponse> {
-    return this.httpClient.post<PostChatMessageResponse>(this.url + 'api/chatrooms/messages', data);
+    return this.httpClient.post<PostChatMessageResponse>(this.url + '/chatrooms/messages', data);
   }
 }
