@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:5000/',
+  apiUrl: 'https://pkgcore-pr-6.herokuapp.com/',
 };
 
 /*

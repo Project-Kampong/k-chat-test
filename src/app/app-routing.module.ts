@@ -30,7 +30,7 @@ const routes: Routes = [
   {
     path: 'onboarding',
     component: OnboardingPage,
-    canActivate: [OnboardingGuard],
+    canActivate: [AuthGuard, OnboardingGuard],
   },
   {
     path: '**',

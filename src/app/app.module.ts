@@ -24,6 +24,7 @@ import { DialogModule } from 'primeng/dialog';
 import { OnboardingPage } from './pages/onboarding-page/onboarding-page.component';
 import { ChatroomPreviewComponent } from './components/chatroom-preview/chatroom-preview.component';
 import { ChatroomWindowComponent } from './components/chatroom-window/chatroom-window.component';
+import { MainHeaderComponent } from './components/main-header/main-header.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ChatroomWindowComponent } from './components/chatroom-window/chatroom-w
     OnboardingPage,
     ChatroomPreviewComponent,
     ChatroomWindowComponent,
+    MainHeaderComponent,
   ],
   imports: [
     ReactiveFormsModule,

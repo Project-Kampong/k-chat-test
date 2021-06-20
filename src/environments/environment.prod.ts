@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://kampong-testing.herokuapp.com/',
+  apiUrl: 'https://pkgcore-test.herokuapp.com/',
 };
