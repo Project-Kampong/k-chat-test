@@ -1,0 +1,35 @@
+@import '../../../variables.scss';
+
+.profile-page-wrapper {
+  margin: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.profile-page-title {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 700;
+  margin: 20px 0;
+}
+
+.account-details-div {
+  .account-details-title {
+    font-weight: 700;
+  }
+
+  .account-details-grid {
+    display: grid;
+    margin: 20px 0;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    row-gap: 10px;
+  }
+}
+
+@media screen and (min-width: $tablet-large) {
+  .profile-page-wrapper {
+    margin: 5% 20%;
+  }
+}

@@ -19,11 +19,6 @@ interface OptionObject {
 })
 export class ChatService {
   private url: string = environment.apiUrl;
-  private options: OptionObject = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-    }),
-  };
 
   constructor(private httpClient: HttpClient) {}
 
