@@ -10,7 +10,7 @@
     </div>
     <div *ngIf="userId !== null && userId.length > 0">
       <span><a>My Events</a></span>
-      <span><a>Profile</a></span>
+      <span><a (click)="routeToProfile()">Profile</a></span>
       <span><a (click)="logoutUser()">Logout</a></span>
     </div>
   </div>
@@ -24,7 +24,7 @@
     </div>
     <div *ngIf="userId !== null && userId.length > 0">
       <button class="general-btn">MY EVENTS</button>
-      <button class="general-btn">PROFILE</button>
+      <button (click)="routeToProfile()" class="general-btn">PROFILE</button>
       <button (click)="logoutUser()" class="general-btn">LOGOUT</button>
     </div>
   </div>
