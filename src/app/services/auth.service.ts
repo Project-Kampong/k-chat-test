@@ -32,6 +32,7 @@ export class AuthService {
     return this.httpClient.post<LoginUserResponse>(this.url + 'api/auth/login', data, this.options).pipe(
       map((res: LoginUserResponse) => {
         localStorage.setItem('userId', res.userId);
+        this.userId = res.userId;
         this.cookieService.set(
           'token',
           res.token,
@@ -45,7 +46,13 @@ export class AuthService {
   registerUser(data: UserRegisterData): Observable<RegisterUserResponse> {
     return this.httpClient.post<RegisterUserResponse>(this.url + 'api/auth/register', data, this.options).pipe(
       map((res: RegisterUserResponse) => {
-        this.cookieService.set('token', res.token);
+        localStorage.setItem('userId', res.userId);
+        this.userId = res.userId;
+        this.cookieService.set(
+          'token',
+          res.token,
+          res.tokenExpiration ? parseInt(res.tokenExpiration.split('d')[0]) : 30,
+        );
         return res;
       }),
     );
@@ -53,6 +60,7 @@ export class AuthService {
 
   logoutUser(): void {
     localStorage.removeItem('userId');
+    this.userId = '';
     this.cookieService.delete('token');
   }
 }

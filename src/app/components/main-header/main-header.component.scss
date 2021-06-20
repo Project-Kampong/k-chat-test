@@ -85,9 +85,9 @@
   }
 
   .btn-div {
-    display: grid;
+    display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: flex-end;
   }
 
   .general-btn {

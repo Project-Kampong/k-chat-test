@@ -23,7 +23,9 @@
         <input id="password-register" formControlName="password" type="password" />
         <label for="confirm-password">Re-Password</label>
         <input id="confirm-password" formControlName="confirmPassword" type="password" />
-        <button type="button" label="Register" (click)="loginUser()">REGISTER</button>
+        <button [disabled]="!isRegisterFormValid()" type="button" label="Register" (click)="registerUser()">
+          REGISTER
+        </button>
       </form>
       <span (click)="fadeCard()" class="switch-text">Already have an account? Click here to login!</span>
     </div>
