@@ -1,28 +1,81 @@
 @import '../../../variables.scss';
 
-.wrapper {
-  background-color: #b8e1ff;
-  height: 100vh;
-  width: 100vw;
+.login-page-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+}
+
+.card-container {
+  margin: 10% 5%;
+  width: 90%;
 }
 
 .card {
-  background-color: #f5f5f5;
+  left: 50%;
+  top: 20vh;
+  transform: translate(-50%, 0);
+  position: absolute;
+  height: fit-content;
+  width: inherit;
   display: flex;
   flex-direction: column;
-  padding: 5% 10%;
-  border-radius: 10px;
-  position: absolute;
-  overflow-x: hidden;
-}
+  justify-content: center;
+  align-items: left;
+  text-align: center;
+  padding: 5%;
+  background: radial-gradient(50% 50% at 50% 50%, #ffbb00 0%, #fdd66b 100%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
 
-.fade-card.fade {
-  opacity: 0;
-  visibility: hidden;
+  .card-title {
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 700;
+    padding: 10px 0;
+  }
+
+  form {
+    * {
+      margin: 5px 0;
+    }
+
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+
+    input {
+      background-color: #fff6de;
+      border-radius: 10px;
+      border: none;
+      font-size: 18px;
+      height: 30px;
+    }
+  }
+
+  .switch-text {
+    text-decoration: underline;
+    margin: 20px 0 0 0;
+    font-size: 14px;
+  }
+
+  button {
+    background-color: #fff6de;
+    font-weight: 700;
+    border: none;
+    font-size: 18px;
+    border-radius: 10px;
+    padding: 5px 15px;
+    width: fit-content;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  button:hover,
+  .switch-text:hover {
+    opacity: 50%;
+    cursor: pointer;
+  }
 }
 
 .fade-card {
@@ -32,36 +85,9 @@
   -webkit-transition: opacity 0.5s ease-in-out;
 }
 
-.title-text {
-  color: #4a4a4a;
-  font-size: 16px;
-  line-height: 16px;
-  margin: 10px 0;
-  text-align: center;
-}
-
-.switch-text {
-  margin: 5px 0;
-  font-size: 12px;
-  line-height: 12px;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.login-form * {
-  display: block;
-  margin: 15px 0;
-}
-
-.register-form * {
-  display: block;
-  margin: 10px 0;
-}
-
-label {
-  color: #4a4a4a;
-  font-size: 14px;
-  line-height: 14px;
+.fade-card.fade {
+  opacity: 0;
+  visibility: hidden;
 }
 
 @keyframes slide-login-out {
@@ -136,31 +162,22 @@ label {
   }
 }
 
-@media screen and (min-width: $tablet-large) {
-  label {
-    font-size: 18px;
-    line-height: 18px;
-  }
+@media screen and (min-width: $tablet-small) {
+  .card {
+    margin: auto 0;
+    padding: 5% 15%;
+    width: 60%;
+    text-align: left;
 
-  .title-text {
-    font-size: 24px;
-    line-height: 24px;
-  }
-}
+    .card-title {
+      font-size: 28px;
+      line-height: 28px;
+      font-weight: 700;
+      padding: 10px 0;
+    }
 
-@media screen and (min-width: $desktop-full) {
-  label {
-    font-size: 24px;
-    line-height: 24px;
-  }
-
-  .title-text {
-    font-size: 36px;
-    line-height: 36px;
-  }
-
-  .register-text {
-    font-size: 16px;
-    line-height: 16px;
+    input {
+      width: fit-content;
+    }
   }
 }

@@ -1,28 +1,31 @@
-<div class="wrapper">
-  <div id="login-card" class="card fade-card">
-    <div class="title-text">Welcome to Kampong!</div>
-    <form class="login-form" [formGroup]="loginCredentials">
-      <label for="username-login">Email</label>
-      <input id="username-login" formControlName="email" type="text" pInputText />
-      <label for="password">Password</label>
-      <p-password id="password" formControlName="password" [feedback]="false"></p-password>
-      <button pButton type="button" label="Login" (click)="login()"></button>
-    </form>
-    <div (click)="fadeCard()" class="switch-text">No account? Click here to register!</div>
-  </div>
-  <div id="register-card" class="card fade-card fade">
-    <div class="title-text">Register today!</div>
-    <form class="register-form" [formGroup]="registerCredentials">
-      <label for="username-register">Username</label>
-      <input id="username-register" formControlName="username" type="text" pInputText />
-      <label for="email">Email</label>
-      <input id="email" formControlName="email" type="text" pInputText />
-      <label for="password">Password</label>
-      <p-password id="password" formControlName="password"></p-password>
-      <label for="confirm-password">Re-Password</label>
-      <p-password id="confirm-password" formControlName="confirmPassword" [feedback]="false"></p-password>
-      <button [disabled]="!isRegisterFormValid()" pButton type="button" label="Register" (click)="register()"></button>
-    </form>
-    <div (click)="fadeCard()" class="switch-text">Already have an account? Click here to login!</div>
+<app-main-header></app-main-header>
+<div class="login-page-wrapper">
+  <div class="card-container">
+    <div id="login-card" class="card fade-card">
+      <span class="card-title">WELCOME TO KAMPONG!</span>
+      <form [formGroup]="loginCredentials">
+        <label for="username-login">Username</label>
+        <input id="username-login" formControlName="username" type="text" />
+        <label for="password">Password</label>
+        <input id="password-login" formControlName="password" type="password" />
+        <button type="button" label="Login" (click)="loginUser()">LOGIN</button>
+      </form>
+      <span (click)="fadeCard()" class="switch-text">No account? Click here to register!</span>
+    </div>
+    <div id="register-card" class="card fade-card fade">
+      <span class="card-title">REGISTER TODAY!</span>
+      <form [formGroup]="registerCredentials">
+        <label for="username-register">Username</label>
+        <input id="username-register" formControlName="username" type="text" />
+        <label for="email-register">Email</label>
+        <input id="email-register" formControlName="email" type="text" />
+        <label for="password-register">Password</label>
+        <input id="password-register" formControlName="password" type="password" />
+        <label for="confirm-password">Re-Password</label>
+        <input id="confirm-password" formControlName="confirmPassword" type="password" />
+        <button type="button" label="Register" (click)="loginUser()">REGISTER</button>
+      </form>
+      <span (click)="fadeCard()" class="switch-text">Already have an account? Click here to login!</span>
+    </div>
   </div>
 </div>

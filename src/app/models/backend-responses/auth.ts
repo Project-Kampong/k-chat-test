@@ -1,9 +1,9 @@
 import { UserData } from '../data/user';
 
 export interface LoginUserResponse {
-  success: boolean;
+  userId: string;
   token: string;
-  error: string;
+  tokenExpiration: string;
 }
 
 export interface LogoutUserResponse {

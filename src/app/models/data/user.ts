@@ -4,9 +4,7 @@ export interface UserLogin {
 }
 
 export interface UserData {
-  email: string;
   username: string;
-  is_activated: boolean;
   role: string;
   user_id: string;
 }
