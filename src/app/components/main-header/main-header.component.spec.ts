@@ -1,18 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { OnboardingPage } from './onboarding-page.component';
 
-describe('OnboardingPage', () => {
-  let component: OnboardingPage;
-  let fixture: ComponentFixture<OnboardingPage>;
+import { MainHeaderComponent } from './main-header.component';
+
+describe('MainHeaderComponent', () => {
+  let component: MainHeaderComponent;
+  let fixture: ComponentFixture<MainHeaderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [OnboardingPage],
+      declarations: [MainHeaderComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OnboardingPage);
+    fixture = TestBed.createComponent(MainHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -6,11 +6,7 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { LoginForm } from '../../forms/login';
 import { RegisterForm } from '../../forms/register';
-import {
-  GetLoggedInUserResponse,
-  LoginUserResponse,
-  RegisterUserResponse,
-} from 'src/app/models/backend-responses/auth';
+import { LoginUserResponse, RegisterUserResponse } from 'src/app/models/backend-responses/auth';
 
 @Component({
   selector: 'app-login-page',
@@ -60,74 +56,45 @@ export class LoginPage implements OnInit, OnDestroy {
     );
   }
 
-  /* For testing purposes, do not delete. */
-  registerTest(): void {
-    this.router.navigate(['/onboarding']);
-  }
-
-  register(): void {
+  registerUser(): void {
     this.subscriptions.push(
       this.authService.registerUser(this.registerCredentials.value).subscribe(
         (res: RegisterUserResponse) => {
-          this.subscriptions.push(
-            this.authService.getLoggedInUserDetails().subscribe(
-              (res: GetLoggedInUserResponse) => {
-                this.messageService.add({
-                  severity: 'success',
-                  summary: 'Successfully Registered!',
-                  detail: 'Welcome to K-Chat!',
-                });
-                this.router.navigate(['/onboarding']);
-              },
-              (err) => {
-                this.messageService.add({
-                  severity: 'error',
-                  summary: 'Oops! Server currently having problems',
-                  detail: 'Please try again later.',
-                });
-              },
-            ),
-          );
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Successfully Registered!',
+            detail: 'Welcome to Kampong!',
+          });
+          this.router.navigate(['/']);
         },
         (err) => {
+          console.log(err);
           this.messageService.add({
             severity: 'error',
-            summary: 'Oops! Something went wrong!',
-            detail: 'Please try again.',
+            summary: 'Username/Email taken already :(',
+            detail: 'Please try again',
           });
         },
       ),
     );
   }
 
-  login(): void {
+  loginUser(): void {
     this.subscriptions.push(
       this.authService.loginUser(this.loginCredentials.value).subscribe(
         (res: LoginUserResponse) => {
-          this.subscriptions.push(
-            this.authService.getLoggedInUserDetails().subscribe(
-              (res: GetLoggedInUserResponse) => {
-                this.messageService.add({
-                  severity: 'success',
-                  summary: 'Successfully logged in',
-                  detail: 'Welcome back to K-Chat!',
-                });
-                this.router.navigate(['/home']);
-              },
-              (err) => {
-                this.messageService.add({
-                  severity: 'error',
-                  summary: 'Oops! Server currently having problems',
-                  detail: 'Please try again later.',
-                });
-              },
-            ),
-          );
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Successfully logged in',
+            detail: 'Welcome back to Kampong!',
+          });
+          this.router.navigate(['/']);
         },
         (err) => {
+          console.log(err);
           this.messageService.add({
             severity: 'error',
-            summary: 'Wrong username/password',
+            summary: 'Wrong Username/Password',
             detail: 'Please try again.',
           });
         },

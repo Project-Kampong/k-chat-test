@@ -1,6 +1,6 @@
 import { FormControl } from '@angular/forms';
 
 export const LoginForm = {
-  email: new FormControl(''),
+  username: new FormControl(''),
   password: new FormControl(''),
 };

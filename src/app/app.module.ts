@@ -7,7 +7,6 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MainPage } from './pages/main-page/main-page.component';
-import { HomePage } from './pages/home-page/home-page.component';
 import { ChatPage } from './pages/chat-page/chat-page.component';
 import { LoginPage } from './pages/login-page/login-page.component';
 import { registerLocaleData } from '@angular/common';
@@ -21,20 +20,19 @@ import { ToastModule } from 'primeng/toast';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { DialogModule } from 'primeng/dialog';
-import { OnboardingPage } from './pages/onboarding-page/onboarding-page.component';
 import { ChatroomPreviewComponent } from './components/chatroom-preview/chatroom-preview.component';
 import { ChatroomWindowComponent } from './components/chatroom-window/chatroom-window.component';
+import { MainHeaderComponent } from './components/main-header/main-header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPage,
-    HomePage,
     ChatPage,
     LoginPage,
-    OnboardingPage,
     ChatroomPreviewComponent,
     ChatroomWindowComponent,
+    MainHeaderComponent,
   ],
   imports: [
     ReactiveFormsModule,

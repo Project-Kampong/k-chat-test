@@ -1,0 +1,31 @@
+<div class="main-header-wrapper">
+  <div class="kampong-logo-div">
+    <img (click)="routeToHome()" src="../../../assets/images/kampong-img-black.svg" alt="KAMPONG!" />
+  </div>
+  <!--Mobile-->
+  <div class="mobile-nav-div">
+    <span><a (click)="routeToHome()">Home</a></span>
+    <div *ngIf="userId === null || userId.length === 0">
+      <span><a (click)="routeToLogin()">Login</a></span>
+    </div>
+    <div *ngIf="userId !== null && userId.length > 0">
+      <span><a>My Events</a></span>
+      <span><a>Profile</a></span>
+      <span><a (click)="logoutUser()">Logout</a></span>
+    </div>
+  </div>
+  <!--Desktop-->
+  <div class="nav-div">
+    <span><a (click)="routeToHome()">Home</a></span>
+  </div>
+  <div class="btn-div">
+    <div *ngIf="userId === null || userId.length === 0">
+      <button (click)="routeToLogin()" class="general-btn">LOGIN</button>
+    </div>
+    <div *ngIf="userId !== null && userId.length > 0">
+      <button class="general-btn">MY EVENTS</button>
+      <button class="general-btn">PROFILE</button>
+      <button (click)="logoutUser()" class="general-btn">LOGOUT</button>
+    </div>
+  </div>
+</div>

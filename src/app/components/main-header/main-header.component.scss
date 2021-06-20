@@ -1,0 +1,109 @@
+@import '../../../variables.scss';
+
+.main-header-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fdd66b;
+}
+
+.kampong-logo-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50px;
+  width: inherit;
+
+  img {
+    height: 25px;
+    width: auto;
+  }
+
+  img:hover {
+    cursor: pointer;
+  }
+}
+
+.mobile-nav-div {
+  background-color: #ffe59d;
+  height: 30px;
+  width: -webkit-fill-available;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow-x: scroll;
+  overflow-y: hidden;
+
+  span {
+    text-decoration: underline;
+    margin: 0 5px;
+    font-weight: 700;
+  }
+
+  span:hover {
+    opacity: 50%;
+    cursor: pointer;
+  }
+}
+.nav-div,
+.btn-div {
+  display: none;
+}
+
+@media screen and (min-width: $tablet-small) {
+  .main-header-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .mobile-nav-div {
+    display: none;
+  }
+
+  .kampong-logo-div {
+    width: auto;
+    align-items: flex-start;
+    margin: 0 20px;
+  }
+
+  .nav-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    span {
+      font-weight: 700;
+      text-decoration: underline;
+      margin: 0 5px;
+    }
+
+    span:hover {
+      opacity: 50%;
+      cursor: pointer;
+    }
+  }
+
+  .btn-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .general-btn {
+    background-color: #fff6de;
+    font-weight: 700;
+    border: none;
+    font-size: 18px;
+    border-radius: 10px;
+    padding: 5px 15px;
+    margin: 0 20px;
+    width: fit-content;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .general-btn:hover {
+    opacity: 50%;
+    cursor: pointer;
+  }
+}
