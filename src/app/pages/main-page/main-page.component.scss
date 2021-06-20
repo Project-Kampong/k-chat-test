@@ -1,4 +1,24 @@
+@import '../../../variables.scss';
+
 .main-page-wrapper {
   height: 100vh;
   background-color: #fff6de;
+}
+
+.main-page-container {
+  padding: 5%;
+}
+
+.event-title {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+@media screen and (min-width: $tablet-small) {
+  .main-page-container {
+    padding: 5% 10%;
+  }
+  .event-title {
+    font-size: 24px;
+  }
 }
