@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   loginUser(data: UserLoginData): Observable<LoginUserResponse> {
-    return this.httpClient.post<LoginUserResponse>(this.url + 'api/auth/login', data, this.options).pipe(
+    return this.httpClient.post<LoginUserResponse>(this.url + '/auth/login', data, this.options).pipe(
       map((res: LoginUserResponse) => {
         localStorage.setItem('userId', res.userId);
         this.userId = res.userId;
@@ -44,7 +44,7 @@ export class AuthService {
   }
 
   registerUser(data: UserRegisterData): Observable<RegisterUserResponse> {
-    return this.httpClient.post<RegisterUserResponse>(this.url + 'api/auth/register', data, this.options).pipe(
+    return this.httpClient.post<RegisterUserResponse>(this.url + '/auth/register', data, this.options).pipe(
       map((res: RegisterUserResponse) => {
         localStorage.setItem('userId', res.userId);
         this.userId = res.userId;

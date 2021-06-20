@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Apollo, gql } from 'apollo-angular';
 
 @Component({
   selector: 'app-profile-page',
@@ -6,7 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-page.component.scss'],
 })
 export class ProfilePage implements OnInit {
-  constructor() {}
+  constructor(private apollo: Apollo) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.apollo
+      .watchQuery({
+        query: gql`
+          {
+            users {
+              username
+            }
+          }
+        `,
+      })
+      .valueChanges.subscribe((res) => console.log(res));
+  }
 }

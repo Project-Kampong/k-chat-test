@@ -24,6 +24,7 @@ import { ChatroomPreviewComponent } from './components/chatroom-preview/chatroom
 import { ChatroomWindowComponent } from './components/chatroom-window/chatroom-window.component';
 import { MainHeaderComponent } from './components/main-header/main-header.component';
 import { ProfilePage } from './pages/profile-page/profile-page.component';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ProfilePage } from './pages/profile-page/profile-page.component';
     PasswordModule,
     ToastModule,
     DialogModule,
+    GraphQLModule,
   ],
   providers: [
     {
