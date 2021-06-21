@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://pkgcore-test.herokuapp.com/api',
-  gqlUrl: 'https://pkgcore-test.herokuapp.com/graphql',
+  apiUrl: 'https://kampong.app/api',
+  gqlUrl: 'https://kampong.app/graphql',
 };
