@@ -1,2 +1,34 @@
 <app-main-header></app-main-header>
-<p>create-event-page works!</p>
+<div class="create-event-page-wrapper">
+  <div class="create-event-bar">
+    <span class="create-event-page-title">CREATE EVENT</span>
+    <button (click)="routeToMyEventsPage()" class="general-btn" type="button">BACK</button>
+  </div>
+  <div class="create-event-div">
+    <form>
+      <div class="create-event-form">
+        <div class="form-field event-name">
+          <span>Name</span>
+          <input type="text" />
+        </div>
+        <div class="form-field category">
+          <span>Topic/Category</span>
+          <input type="text" />
+        </div>
+        <div class="form-field start-date">
+          <span>Start Date</span>
+          <input type="text" />
+        </div>
+        <div class="form-field end-date">
+          <span>End Date</span>
+          <input type="text" />
+        </div>
+      </div>
+      <div class="form-field">
+        <span>Description</span>
+        <textarea></textarea>
+      </div>
+    </form>
+    <button class="general-btn" type="button">Create Event</button>
+  </div>
+</div>
