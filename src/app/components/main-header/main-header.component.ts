@@ -24,6 +24,10 @@ export class MainHeaderComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  routeToMyEvents(): void {
+    this.router.navigate(['/my-events']);
+  }
+
   logoutUser(): void {
     this.authService.logoutUser();
     this.router.navigate(['/login']);
