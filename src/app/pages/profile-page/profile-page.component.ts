@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Apollo } from 'apollo-angular';
 import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { ProfileDetailsForm } from 'src/app/forms/profile';
