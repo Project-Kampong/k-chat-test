@@ -9,7 +9,7 @@
       <span><a (click)="routeToLogin()">Login</a></span>
     </div>
     <div *ngIf="userId !== null && userId.length > 0">
-      <span><a>My Events</a></span>
+      <span><a (click)="routeToMyEvents()">My Events</a></span>
       <span><a (click)="routeToProfile()">Profile</a></span>
       <span><a (click)="logoutUser()">Logout</a></span>
     </div>
@@ -23,7 +23,7 @@
       <button (click)="routeToLogin()" class="general-btn">LOGIN</button>
     </div>
     <div *ngIf="userId !== null && userId.length > 0">
-      <button class="general-btn">MY EVENTS</button>
+      <button (click)="routeToMyEvents()" class="general-btn">MY EVENTS</button>
       <button (click)="routeToProfile()" class="general-btn">PROFILE</button>
       <button (click)="logoutUser()" class="general-btn">LOGOUT</button>
     </div>

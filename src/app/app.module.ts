@@ -25,6 +25,10 @@ import { ChatroomWindowComponent } from './components/chatroom-window/chatroom-w
 import { MainHeaderComponent } from './components/main-header/main-header.component';
 import { ProfilePage } from './pages/profile-page/profile-page.component';
 import { GraphQLModule } from './graphql.module';
+import { MyEventsPage } from './pages/my-events-page/my-events-page.component';
+import { CreateEventPage } from './pages/create-event-page/create-event-page.component';
+import { OrganizedEventCardComponent } from './components/organized-event-card/organized-event-card.component';
+import { OrganizedEventPage } from './pages/organized-event-page/organized-event-page.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,10 @@ import { GraphQLModule } from './graphql.module';
     ChatroomWindowComponent,
     MainHeaderComponent,
     ProfilePage,
+    MyEventsPage,
+    CreateEventPage,
+    OrganizedEventCardComponent,
+    OrganizedEventPage,
   ],
   imports: [
     ReactiveFormsModule,

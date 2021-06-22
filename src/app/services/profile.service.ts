@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { GetUserProfileByIdResponse } from '../models/backend-responses/profile';
 import { UserProfileDetails } from '../models/data/profile';
 
-const USER_PROFILE_QUERY: DocumentNode = gql`
+const USER_PROFILE_BY_ID: DocumentNode = gql`
   query user($_id: String!) {
     user(_id: $_id) {
       username
@@ -41,7 +41,7 @@ export class ProfileService {
 
   getUserProfileById(userId: string): Observable<ApolloQueryResult<GetUserProfileByIdResponse>> {
     return this.apollo.watchQuery<GetUserProfileByIdResponse>({
-      query: USER_PROFILE_QUERY,
+      query: USER_PROFILE_BY_ID,
       variables: { _id: userId },
     }).valueChanges;
   }
@@ -54,7 +54,7 @@ export class ProfileService {
       },
       refetchQueries: [
         {
-          query: USER_PROFILE_QUERY,
+          query: USER_PROFILE_BY_ID,
           variables: { _id: userId },
         },
       ],
