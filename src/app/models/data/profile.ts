@@ -1,8 +1,17 @@
 export interface UserProfile {
   email: string;
   username: string;
-  dob: null | string;
-  gender: null | string;
-  name: null | string;
-  occupation: null | string;
+  dob: Date | string;
+  gender: string;
+  name: string;
+  occupation: string;
+  profilePicture: string;
+}
+
+export interface UserProfileDetails {
+  name: string;
+  gender: string;
+  profilePicture: string;
+  dob: Date | string;
+  occupation: string;
 }
