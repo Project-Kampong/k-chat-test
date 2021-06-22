@@ -27,6 +27,7 @@ import { ProfilePage } from './pages/profile-page/profile-page.component';
 import { GraphQLModule } from './graphql.module';
 import { MyEventsPage } from './pages/my-events-page/my-events-page.component';
 import { CreateEventPage } from './pages/create-event-page/create-event-page.component';
+import { OrganizedEventCardComponent } from './components/organized-event-card/organized-event-card.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { CreateEventPage } from './pages/create-event-page/create-event-page.com
     ProfilePage,
     MyEventsPage,
     CreateEventPage,
+    OrganizedEventCardComponent,
   ],
   imports: [
     ReactiveFormsModule,

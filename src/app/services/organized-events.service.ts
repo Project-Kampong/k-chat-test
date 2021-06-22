@@ -49,6 +49,11 @@ export class OrganizedEventsService {
       variables: {
         createOrganizedEventInput: { organizerId: organizerId, ...fields },
       },
+      refetchQueries: [
+        {
+          query: GET_ALL_ORGANIZED_EVENTS,
+        },
+      ],
     });
   }
 

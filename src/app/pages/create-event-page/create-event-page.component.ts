@@ -57,6 +57,5 @@ export class CreateEventPage implements OnInit, OnDestroy {
         },
       ),
     );
-    console.log(this.createEventForm.value);
   }
 }
