@@ -28,6 +28,25 @@
   }
 }
 
+form {
+  * {
+    margin: auto 0;
+  }
+
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+
+  input,
+  select {
+    background-color: #fdd66b;
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+    height: 30px;
+  }
+}
+
 .profile-details-div {
   .profile-details-title {
     font-weight: 700;
