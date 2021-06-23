@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://pkgcore-pr-13.herokuapp.com/api',
-  gqlUrl: 'https://pkgcore-pr-13.herokuapp.com/graphql',
+  apiUrl: 'https://pkgcore-test.herokuapp.com/api/',
+  gqlUrl: 'https://pkgcore-test.herokuapp.com/graphql',
 };
 
 /*
