@@ -7,7 +7,7 @@ import { GetUserProfileByIdResponse } from '../models/backend-responses/profile'
 import { UserProfileDetails } from '../models/data/profile';
 
 const USER_PROFILE_BY_ID: DocumentNode = gql`
-  query user($_id: String!) {
+  query user($_id: ID!) {
     user(_id: $_id) {
       username
       email

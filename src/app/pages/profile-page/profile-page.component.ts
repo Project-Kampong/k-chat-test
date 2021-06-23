@@ -29,11 +29,16 @@ export class ProfilePage implements OnInit, OnDestroy {
     this.userId = this.authService.getUserId();
     this.profileDetailsForm = this.fb.group({ ...ProfileDetailsForm });
     this.subscriptions.push(
-      this.profileService.getUserProfileById(this.userId).subscribe((res) => {
-        this.userProfile = { ...res.data.user };
-        this.userProfile.dob = res.data.user.dob ? res.data.user.dob.toString().substr(0, 10) : '';
-        this.profileDetailsForm.patchValue(this.userProfile);
-      }),
+      this.profileService.getUserProfileById(this.userId).subscribe(
+        (res) => {
+          this.userProfile = { ...res.data.user };
+          this.userProfile.dob = res.data.user.dob ? res.data.user.dob.toString().substr(0, 10) : '';
+          this.profileDetailsForm.patchValue(this.userProfile);
+        },
+        (err) => {
+          console.log(err);
+        },
+      ),
     );
   }
 
