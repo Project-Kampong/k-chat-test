@@ -1,0 +1,41 @@
+@import '../../../variables.scss';
+
+.public-profile-page-wrapper {
+  margin: 5% 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.profile-details-grid {
+  display: grid;
+  gap: 20px;
+  margin: 10px 0;
+  grid-template-columns: 1fr 1fr;
+}
+
+.field {
+  font-weight: 700;
+}
+.value {
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
+}
+
+.title {
+  font-weight: 700;
+}
+
+.all-events-div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+@media screen and (min-width: $tablet-large) {
+  .public-profile-page-wrapper {
+    margin: 5% 20%;
+  }
+}

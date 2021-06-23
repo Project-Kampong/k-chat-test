@@ -1,1 +1,18 @@
-<p>public-profile-page works!</p>
+<app-main-header></app-main-header>
+<div class="public-profile-page-wrapper">
+  <div class="profile-details-grid">
+    <span class="field">Name:</span>
+    <span class="value">{{ profileDetails.name }}</span>
+    <span class="field">Email:</span>
+    <span class="value">{{ profileDetails.email }}</span>
+    <span class="field">Username:</span>
+    <span class="value">{{ profileDetails.username }}</span>
+    <span class="field">Occupation:</span>
+    <span class="value">{{ profileDetails.occupation }}</span>
+    <span class="field">Gender:</span>
+    <span class="value">{{ profileDetails.gender }}</span>
+  </div>
+  <div class="all-events-div">
+    <span class="title">{{ profileDetails.username }}'s Events:</span>
+  </div>
+</div>
