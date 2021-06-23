@@ -34,7 +34,7 @@ const UPDATE_ORGANIZED_EVENT: DocumentNode = gql`
 `;
 
 const REMOVE_ORGANIZED_EVENT: DocumentNode = gql`
-  mutation removeOrganizedEvent($_id: String!) {
+  mutation removeOrganizedEvent($_id: ID!) {
     removeOrganizedEvent(_id: $_id) {
       _id
     }
@@ -42,7 +42,7 @@ const REMOVE_ORGANIZED_EVENT: DocumentNode = gql`
 `;
 
 const GET_EVENT_BY_ID: DocumentNode = gql`
-  query organizedEvent($_id: String!) {
+  query organizedEvent($_id: ID!) {
     organizedEvent(_id: $_id) {
       _id
       eventName
@@ -78,7 +78,7 @@ const GET_ALL_ORGANIZED_EVENTS: DocumentNode = gql`
 `;
 
 const GET_ALL_ORGANIZED_EVENTS_BY_USER: DocumentNode = gql`
-  query user($_id: String!) {
+  query user($_id: ID!) {
     user(_id: $_id) {
       events {
         _id

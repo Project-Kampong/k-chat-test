@@ -23,9 +23,15 @@ export class MyEventsPage implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
-    this.organizedEventsService.getAllOrganizedEventsByUser(this.userId).subscribe((res) => {
-      this.currentEventsArr = res.data.user.events;
-    });
+    this.organizedEventsService.getAllOrganizedEventsByUser(this.userId).subscribe(
+      (res) => {
+        console.log(res);
+        this.currentEventsArr = res.data.user.events;
+      },
+      (err) => {
+        console.log(err);
+      },
+    );
   }
 
   ngOnDestroy(): void {
