@@ -108,4 +108,8 @@ export class EditEventPage implements OnInit, OnDestroy {
   routeToMyEventsPage(): void {
     this.router.navigate(['/my-events']);
   }
+
+  routeToPublicPage(): void {
+    this.router.navigate(['/events/' + this.eventId]);
+  }
 }
