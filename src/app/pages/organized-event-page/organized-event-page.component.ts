@@ -28,7 +28,6 @@ export class OrganizedEventPage implements OnInit, OnDestroy {
       this.organizedEventsService.getEventById(this.eventId ? this.eventId : '').subscribe(
         (res) => {
           this.eventDetails = { ...res.data.organizedEvent };
-          console.log(this.eventDetails);
         },
         (err) => {
           this.messageService.add({
