@@ -39,6 +39,7 @@ const USER_PROFILE_MUTATION: DocumentNode = gql`
 export class ProfileService {
   constructor(private apollo: Apollo) {}
 
+  //Cache Data may be lost here, need to merge with existing query in organized events service
   getUserProfileById(userId: string): Observable<ApolloQueryResult<GetUserProfileByIdResponse>> {
     return this.apollo.watchQuery<GetUserProfileByIdResponse>({
       query: USER_PROFILE_BY_ID,

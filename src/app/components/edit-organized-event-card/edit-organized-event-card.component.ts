@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { OrganizedEvent } from 'src/app/models/data/organizedEvents';
 
 @Component({
-  selector: 'app-organized-event-card',
-  templateUrl: './organized-event-card.component.html',
-  styleUrls: ['./organized-event-card.component.scss'],
+  selector: 'app-edit-organized-event-card',
+  templateUrl: './edit-organized-event-card.component.html',
+  styleUrls: ['./edit-organized-event-card.component.scss'],
 })
-export class OrganizedEventCardComponent implements OnInit {
+export class EditOrganizedEventCardComponent implements OnInit {
   @Input() organizedEventDetails: OrganizedEvent = <OrganizedEvent>{};
 
   constructor(private router: Router) {}
@@ -20,7 +20,5 @@ export class OrganizedEventCardComponent implements OnInit {
       : 'Present';
   }
 
-  routeToEventPage(): void {
-    this.router.navigate(['/events/' + this.organizedEventDetails._id]);
-  }
+  routeToEditEventPage(): void {}
 }

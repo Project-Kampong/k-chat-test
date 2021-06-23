@@ -37,6 +37,26 @@ const GET_ALL_ORGANIZED_EVENTS: DocumentNode = gql`
   }
 `;
 
+const GET_ALL_ORGANIZED_EVENTS_BY_USER: DocumentNode = gql`
+  query user($_id: String!) {
+    user(_id: $_id) {
+      events {
+        _id
+        eventName
+        startDate
+        endDate
+        description
+        organizerId
+        category
+        eventPassword
+        qnaSessionOpen
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;
+
 @Injectable({
   providedIn: 'root',
 })
@@ -51,15 +71,24 @@ export class OrganizedEventsService {
       },
       refetchQueries: [
         {
-          query: GET_ALL_ORGANIZED_EVENTS,
+          query: GET_ALL_ORGANIZED_EVENTS_BY_USER,
+          variables: { _id: organizerId },
         },
       ],
     });
   }
 
+  getAllOrganizedEventsByUser(userId: string): Observable<ApolloQueryResult<any>> {
+    return this.apollo.watchQuery<any>({
+      query: GET_ALL_ORGANIZED_EVENTS_BY_USER,
+      variables: { _id: userId },
+    }).valueChanges;
+  }
+
   getAllOrganizedEvents(): Observable<ApolloQueryResult<GetAllOrganizedEventsResponse>> {
     return this.apollo.watchQuery<GetAllOrganizedEventsResponse>({
       query: GET_ALL_ORGANIZED_EVENTS,
+      fetchPolicy: 'network-only',
     }).valueChanges;
   }
 }
