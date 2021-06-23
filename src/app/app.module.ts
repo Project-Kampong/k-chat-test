@@ -30,6 +30,7 @@ import { CreateEventPage } from './pages/create-event-page/create-event-page.com
 import { OrganizedEventCardComponent } from './components/organized-event-card/organized-event-card.component';
 import { OrganizedEventPage } from './pages/organized-event-page/organized-event-page.component';
 import { EditOrganizedEventCardComponent } from './components/edit-organized-event-card/edit-organized-event-card.component';
+import { EditEventPage } from './pages/edit-event-page/edit-event-page.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { EditOrganizedEventCardComponent } from './components/edit-organized-eve
     OrganizedEventCardComponent,
     OrganizedEventPage,
     EditOrganizedEventCardComponent,
+    EditEventPage,
   ],
   imports: [
     ReactiveFormsModule,

@@ -4,7 +4,7 @@ import { Apollo, gql } from 'apollo-angular';
 import { DocumentNode } from 'graphql';
 import { Observable } from 'rxjs';
 import { GetAllOrganizedEventsResponse } from '../models/backend-responses/organizedEvents';
-import { CreateEventDetails } from '../models/data/organizedEvents';
+import { CreateEventDetails, UpdateEventDetails } from '../models/data/organizedEvents';
 
 const CREATE_ORGANIZED_EVENT: DocumentNode = gql`
   mutation createOrganizedEvent($createOrganizedEventInput: CreateOrganizedEventInput!) {
@@ -15,6 +15,38 @@ const CREATE_ORGANIZED_EVENT: DocumentNode = gql`
       description
       organizerId
       category
+    }
+  }
+`;
+
+const UPDATE_ORGANIZED_EVENT: DocumentNode = gql`
+  mutation createOrganizedEvent($updateOrganizedEventInput: UpdateOrganizedEventInput!) {
+    updateOrganizedEvent(updateOrganizedEventInput: $updateOrganizedEventInput) {
+      eventName
+      startDate
+      endDate
+      description
+      organizerId
+      category
+      _id
+    }
+  }
+`;
+
+const GET_EVENT_BY_ID: DocumentNode = gql`
+  query organizedEvent($_id: String!) {
+    organizedEvent(_id: $_id) {
+      _id
+      eventName
+      startDate
+      endDate
+      description
+      organizerId
+      category
+      eventPassword
+      qnaSessionOpen
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -76,6 +108,28 @@ export class OrganizedEventsService {
         },
       ],
     });
+  }
+
+  updateOrganizedEvent(organizerId: string, eventId: string, fields: UpdateEventDetails): Observable<unknown> {
+    return this.apollo.mutate({
+      mutation: UPDATE_ORGANIZED_EVENT,
+      variables: {
+        updateOrganizedEventInput: { organizerId: organizerId, _id: eventId, ...fields },
+      },
+      refetchQueries: [
+        {
+          query: GET_ALL_ORGANIZED_EVENTS_BY_USER,
+          variables: { _id: organizerId },
+        },
+      ],
+    });
+  }
+
+  getEventById(eventId: string): Observable<ApolloQueryResult<any>> {
+    return this.apollo.watchQuery<any>({
+      query: GET_EVENT_BY_ID,
+      variables: { _id: eventId },
+    }).valueChanges;
   }
 
   getAllOrganizedEventsByUser(userId: string): Observable<ApolloQueryResult<any>> {

@@ -1,0 +1,37 @@
+<app-main-header></app-main-header>
+<div class="edit-event-page-wrapper">
+  <div class="edit-event-bar">
+    <span class="edit-event-page-title">EDIT EVENT</span>
+    <button (click)="routeToMyEventsPage()" class="general-btn" type="button">BACK</button>
+  </div>
+  <div class="edit-event-div">
+    <form [formGroup]="editEventForm">
+      <div class="edit-event-form">
+        <div class="form-field event-name">
+          <span>Event Name</span>
+          <input formControlName="eventName" type="text" />
+        </div>
+        <div class="form-field category">
+          <span>Topic/Category</span>
+          <input formControlName="category" type="text" />
+        </div>
+        <div class="form-field start-date">
+          <span>Start Date</span>
+          <input formControlName="startDate" type="date" />
+        </div>
+        <div class="form-field end-date">
+          <span>End Date</span>
+          <input formControlName="endDate" type="date" />
+        </div>
+      </div>
+      <div class="form-field">
+        <span>Description</span>
+        <textarea formControlName="description"></textarea>
+      </div>
+    </form>
+    <div class="btn-div">
+      <button (click)="updateEvent()" class="general-btn" type="button">Edit Event</button>
+      <button class="general-btn" type="button" style="background-color: red">DELETE EVENT</button>
+    </div>
+  </div>
+</div>

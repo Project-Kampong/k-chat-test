@@ -6,6 +6,14 @@ export interface CreateEventDetails {
   description: string;
 }
 
+export interface UpdateEventDetails {
+  eventName: string;
+  category: string;
+  startDate: Date | string;
+  endDate: Date | string;
+  description: string;
+}
+
 export interface OrganizedEvent {
   category: string;
   createdAt: string;

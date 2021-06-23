@@ -41,7 +41,7 @@ export class ProfilePage implements OnInit, OnDestroy {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
-  saveProfileDetails(): any {
+  saveProfileDetails(): void {
     this.subscriptions.push(
       this.profileService.updateUserProfileById(this.userId, this.profileDetailsForm.value).subscribe(
         (res) => {

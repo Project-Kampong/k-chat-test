@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './helpers/auth.guard';
 import { CreateEventPage } from './pages/create-event-page/create-event-page.component';
+import { EditEventPage } from './pages/edit-event-page/edit-event-page.component';
 import { LoginPage } from './pages/login-page/login-page.component';
 import { MainPage } from './pages/main-page/main-page.component';
 import { MyEventsPage } from './pages/my-events-page/my-events-page.component';
@@ -34,6 +35,11 @@ const routes: Routes = [
   {
     path: 'my-events/create',
     component: CreateEventPage,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'my-events/edit/:id',
+    component: EditEventPage,
     canActivate: [AuthGuard],
   },
   {

@@ -20,5 +20,7 @@ export class EditOrganizedEventCardComponent implements OnInit {
       : 'Present';
   }
 
-  routeToEditEventPage(): void {}
+  routeToEditEventPage(): void {
+    this.router.navigate(['/my-events/edit/' + this.organizedEventDetails._id]);
+  }
 }
