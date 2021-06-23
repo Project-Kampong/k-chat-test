@@ -1,2 +1,20 @@
 <app-main-header></app-main-header>
-<p>organized-event-page works!</p>
+<div class="organized-event-page-wrapper">
+  <div class="event-details-grid">
+    <span class="field">Event:</span>
+    <span class="value">{{ eventDetails.eventName }}</span>
+    <span class="field">Category:</span>
+    <span class="value">{{ eventDetails.category }}</span>
+    <span class="field">Start Date:</span>
+    <span class="value">{{ eventDetails.startDate }}</span>
+    <span class="field">End Date:</span>
+    <span class="value">{{ eventDetails.endDate }}</span>
+    <span class="field">Organizer ID:</span>
+    <span class="value">{{ eventDetails.organizerId }}</span>
+  </div>
+  <div class="event-details-description">
+    <span class="field">Description</span>
+    <span class="value">{{ eventDetails.description }}</span>
+  </div>
+  <button (click)="routeToQNAPage()" class="general-btn" type="button">Q&A Session</button>
+</div>
