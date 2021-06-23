@@ -6,7 +6,15 @@
   </div>
   <div class="ongoing-events-div">
     <span class="ongoing-events-title">ONGOING</span>
-    <div class="placeholder">You have no ongoing events!</div>
+    <div *ngIf="currentEventsArr.length > 0; else noCurrentEvents" class="ongoing-events-grid">
+      <app-edit-organized-event-card
+        *ngFor="let currentEvent of currentEventsArr"
+        [organizedEventDetails]="currentEvent"
+      ></app-edit-organized-event-card>
+    </div>
+    <ng-template #noCurrentEvents>
+      <div else class="placeholder">You have no ongoing events!</div>
+    </ng-template>
   </div>
   <div class="past-events-div">
     <span class="past-events-title">PAST EVENTS</span>

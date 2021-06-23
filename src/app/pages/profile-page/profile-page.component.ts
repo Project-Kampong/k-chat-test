@@ -31,7 +31,7 @@ export class ProfilePage implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.profileService.getUserProfileById(this.userId).subscribe((res) => {
         this.userProfile = { ...res.data.user };
-        this.userProfile.dob = res.data.user.dob.toString().substr(0, 10);
+        this.userProfile.dob = res.data.user.dob ? res.data.user.dob.toString().substr(0, 10) : '';
         this.profileDetailsForm.patchValue(this.userProfile);
       }),
     );
@@ -41,7 +41,7 @@ export class ProfilePage implements OnInit, OnDestroy {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
-  saveProfileDetails(): any {
+  saveProfileDetails(): void {
     this.subscriptions.push(
       this.profileService.updateUserProfileById(this.userId, this.profileDetailsForm.value).subscribe(
         (res) => {
