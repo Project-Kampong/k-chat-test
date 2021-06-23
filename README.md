@@ -1,5 +1,9 @@
 # KChatTest
 
+[![Build](https://github.com/Project-Kampong/k-chat-test/actions/workflows/build.yaml/badge.svg)](https://github.com/Project-Kampong/k-chat-test/actions/workflows/build.yaml)
+[![CodeQL](https://github.com/Project-Kampong/k-chat-test/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Project-Kampong/k-chat-test/actions/workflows/codeql-analysis.yml)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/Project-Kampong/k-chat-test.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Project-Kampong/k-chat-test/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/Project-Kampong/k-chat-test.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/Project-Kampong/k-chat-test/context:javascript)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/204819b6-9916-4ae7-8f10-2c131ceb92a5/deploy-status)](https://app.netlify.com/sites/k-chat-test/deploys)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.1.
