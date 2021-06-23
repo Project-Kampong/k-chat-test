@@ -8,6 +8,7 @@ import { MainPage } from './pages/main-page/main-page.component';
 import { MyEventsPage } from './pages/my-events-page/my-events-page.component';
 import { OrganizedEventPage } from './pages/organized-event-page/organized-event-page.component';
 import { ProfilePage } from './pages/profile-page/profile-page.component';
+import { PublicProfilePage } from './pages/public-profile-page/public-profile-page.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,11 @@ const routes: Routes = [
     component: OrganizedEventPage,
   },
   {
-    path: 'profile',
+    path: 'profile/:id',
+    component: PublicProfilePage,
+  },
+  {
+    path: 'my-profile',
     component: ProfilePage,
     canActivate: [AuthGuard],
   },
@@ -32,14 +37,15 @@ const routes: Routes = [
     component: MyEventsPage,
     canActivate: [AuthGuard],
   },
-  {
-    path: 'my-events/create',
-    component: CreateEventPage,
-    canActivate: [AuthGuard],
-  },
+
   {
     path: 'my-events/edit/:id',
     component: EditEventPage,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'my-events/create',
+    component: CreateEventPage,
     canActivate: [AuthGuard],
   },
   {

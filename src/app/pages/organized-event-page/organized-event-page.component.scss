@@ -47,6 +47,12 @@
   cursor: pointer;
 }
 
+.btn-div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 @media screen and (min-width: $tablet-large) {
   .organized-event-page-wrapper {
     margin: 5% 20%;

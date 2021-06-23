@@ -17,7 +17,7 @@ export class MainHeaderComponent implements OnInit {
   }
 
   routeToProfile(): void {
-    this.router.navigate(['/profile']);
+    this.router.navigate(['/my-profile']);
   }
 
   routeToHome(): void {

@@ -9,12 +9,13 @@
     <span class="value">{{ eventDetails.startDate }}</span>
     <span class="field">End Date:</span>
     <span class="value">{{ eventDetails.endDate }}</span>
-    <span class="field">Organizer ID:</span>
-    <span class="value">{{ eventDetails.organizerId }}</span>
   </div>
   <div class="event-details-description">
     <span class="field">Description</span>
     <span class="value">{{ eventDetails.description }}</span>
   </div>
-  <button (click)="routeToQNAPage()" class="general-btn" type="button">Q&A Session</button>
+  <div class="btn-div">
+    <button (click)="routeToQNAPage()" class="general-btn" type="button">Q&A Session</button>
+    <button (click)="routeToOrganizerProfile()" class="general-btn" type="button">View Organizer</button>
+  </div>
 </div>

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { OrganizedEvent } from 'src/app/models/data/organizedEvents';
@@ -10,7 +10,7 @@ import { OrganizedEventsService } from 'src/app/services/organized-events.servic
   templateUrl: './organized-event-page.component.html',
   styleUrls: ['./organized-event-page.component.scss'],
 })
-export class OrganizedEventPage implements OnInit {
+export class OrganizedEventPage implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   private eventId: string | null = '';
   eventDetails: OrganizedEvent = <OrganizedEvent>{};
@@ -19,6 +19,7 @@ export class OrganizedEventPage implements OnInit {
     private organizedEventsService: OrganizedEventsService,
     private route: ActivatedRoute,
     private messageService: MessageService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -40,11 +41,19 @@ export class OrganizedEventPage implements OnInit {
     );
   }
 
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((sub) => sub.unsubscribe());
+  }
+
   routeToQNAPage(): void {
     this.messageService.add({
       severity: 'error',
       summary: 'Q&A Session is closed',
       detail: "Oops! This function isn't available at the moment. :(",
     });
+  }
+
+  routeToOrganizerProfile(): void {
+    this.router.navigate(['/profile/' + this.eventDetails.organizerId]);
   }
 }
