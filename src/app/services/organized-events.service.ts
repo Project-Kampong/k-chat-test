@@ -33,6 +33,14 @@ const UPDATE_ORGANIZED_EVENT: DocumentNode = gql`
   }
 `;
 
+const REMOVE_ORGANIZED_EVENT: DocumentNode = gql`
+  mutation removeOrganizedEvent($_id: String!) {
+    removeOrganizedEvent(_id: $_id) {
+      _id
+    }
+  }
+`;
+
 const GET_EVENT_BY_ID: DocumentNode = gql`
   query organizedEvent($_id: String!) {
     organizedEvent(_id: $_id) {
@@ -101,6 +109,19 @@ export class OrganizedEventsService {
       variables: {
         createOrganizedEventInput: { organizerId: organizerId, ...fields },
       },
+      refetchQueries: [
+        {
+          query: GET_ALL_ORGANIZED_EVENTS_BY_USER,
+          variables: { _id: organizerId },
+        },
+      ],
+    });
+  }
+
+  removeOrganizedEvent(organizerId: string, eventId: string): Observable<unknown> {
+    return this.apollo.mutate({
+      mutation: REMOVE_ORGANIZED_EVENT,
+      variables: { _id: eventId },
       refetchQueries: [
         {
           query: GET_ALL_ORGANIZED_EVENTS_BY_USER,

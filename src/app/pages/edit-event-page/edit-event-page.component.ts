@@ -55,6 +55,28 @@ export class EditEventPage implements OnInit, OnDestroy {
     );
   }
 
+  removeEvent(): void {
+    this.subscriptions.push(
+      this.organizedEventsService.removeOrganizedEvent(this.userId, this.eventDetails._id).subscribe(
+        (res) => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Event deleted successfully',
+          });
+          this.router.navigate(['/my-events']);
+        },
+        (err) => {
+          console.log(err);
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Failed to delete event',
+            detail: 'Please try again.',
+          });
+        },
+      ),
+    );
+  }
+
   updateEvent(): void {
     this.subscriptions.push(
       this.organizedEventsService
