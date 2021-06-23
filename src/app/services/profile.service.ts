@@ -16,6 +16,19 @@ const USER_PROFILE_BY_ID: DocumentNode = gql`
       dob
       occupation
       profilePicture
+      events {
+        _id
+        eventName
+        startDate
+        endDate
+        description
+        organizerId
+        category
+        eventPassword
+        qnaSessionOpen
+        createdAt
+        updatedAt
+      }
     }
   }
 `;

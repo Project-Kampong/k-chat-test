@@ -13,6 +13,12 @@
     <span class="value">{{ profileDetails.gender }}</span>
   </div>
   <div class="all-events-div">
-    <span class="title">{{ profileDetails.username }}'s Events:</span>
+    <span class="title">{{ profileDetails.username }}'s Events</span>
+    <div class="all-events-grid">
+      <app-organized-event-card
+        *ngFor="let userEvent of userEventsArr"
+        [organizedEventDetails]="userEvent"
+      ></app-organized-event-card>
+    </div>
   </div>
 </div>

@@ -1,3 +1,5 @@
+import { OrganizedEvent } from './organizedEvents';
+
 export interface UserProfile {
   email: string;
   username: string;
@@ -6,6 +8,7 @@ export interface UserProfile {
   name: string;
   occupation: string;
   profilePicture: string;
+  events: OrganizedEvent[];
 }
 
 export interface UserProfileDetails {
