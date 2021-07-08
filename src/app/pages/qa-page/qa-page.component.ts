@@ -12,7 +12,7 @@ export class QaPageComponent implements OnInit {
   group: String = '';
   joinRoomRequest = {} as JoinRoomRequest;
   questionRequest = {} as QuestionRequest;
-  questionsResponse: QuestionResponse[] = [];
+  questionsResponse: QuestionResponse[] = [{ roomId: '1', question: 'What is this?' }];
 
   constructor(private qaService: QaService) {}
 

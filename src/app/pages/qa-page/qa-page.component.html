@@ -28,7 +28,42 @@
         <div *ngFor="let question of questionsResponse; let i = index">
           <p-card header="Question {{ i }}" [style]="{ width: '25rem', 'margin-bottom': '2em' }">
             <ng-template pTemplate="header"> </ng-template>
-            <p>{{ question.question }}</p>
+            <div class="p-grid">
+              <div class="p-col-9">
+                <p>{{ question.question }}</p>
+              </div>
+              <div class="p-col-1">
+                <p-divider layout="vertical"></p-divider>
+              </div>
+              <div class="p-col-2">
+                <p-button icon="pi pi-angle-up" iconPos="left">
+                  <div class="vote-count">5</div>
+                </p-button>
+              </div>
+            </div>
+            <ng-template pTemplate="footer">
+              <div class="p-grid">
+                <div class="p-col-8"></div>
+                <div class="p-col-4"><p-button label="Reply" icon="pi pi-comment"></p-button></div>
+              </div>
+              <p-accordion>
+                <p-accordionTab header="Show replies">
+                  <div class="p-grid">
+                    <div class="p-col-9">
+                      <p>This is a test reply 1</p>
+                    </div>
+                    <div class="p-col-1">
+                      <p-divider layout="vertical"></p-divider>
+                    </div>
+                    <div class="p-col-2">
+                      <p-button icon="pi pi-angle-up" iconPos="left">
+                        <div class="vote-count">5</div>
+                      </p-button>
+                    </div>
+                  </div>
+                </p-accordionTab>
+              </p-accordion>
+            </ng-template>
           </p-card>
         </div>
       </div>

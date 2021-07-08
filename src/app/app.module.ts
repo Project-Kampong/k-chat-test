@@ -24,6 +24,7 @@ import { QaPageComponent } from './pages/qa-page/qa-page.component';
 import { registerLocaleData } from '@angular/common';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { ToastModule } from 'primeng/toast';
+import { AccordionModule } from 'primeng/accordion';
 
 registerLocaleData(en);
 
@@ -45,6 +46,7 @@ const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
     SocketIoModule.forRoot(config),
     DividerModule,
     CardModule,
+    AccordionModule,
   ],
   providers: [
     {
