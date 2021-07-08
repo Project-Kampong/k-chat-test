@@ -1,1 +1,18 @@
-<div>This is the chat service.</div>
+<button pButton type="button" label="Home" (click)="routeToHome()"></button>
+<button pButton type="button" label="Back" (click)="checkWindowSize()"></button>
+<div class="wrapper">
+  <div class="preview-div" id="preview-div">
+    <div class="preview-list">
+      <div class="divider"></div>
+      <div *ngFor="let chatroomPreview of chatroomPreviews">
+        <app-chatroom-preview
+          [chatroomPreviewData]="chatroomPreview"
+          [routeToChatWindow]="routeToChatWindow"
+        ></app-chatroom-preview>
+      </div>
+    </div>
+  </div>
+  <div id="chat-div" class="chat-div">
+    <app-chatroom-window [chatroomPreviewData]="selectedChatroomPreview" [chatId]="chatId"></app-chatroom-window>
+  </div>
+</div>

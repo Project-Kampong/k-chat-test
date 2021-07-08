@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './helpers/auth.guard';
-import { OnboardingGuard } from './helpers/onboarding.guard';
-import { ChatPage } from './pages/chat-page/chat-page.component';
-import { HomePage } from './pages/home-page/home-page.component';
+import { CreateEventPage } from './pages/create-event-page/create-event-page.component';
+import { EditEventPage } from './pages/edit-event-page/edit-event-page.component';
 import { LoginPage } from './pages/login-page/login-page.component';
 import { MainPage } from './pages/main-page/main-page.component';
-import { OnboardingPage } from './pages/onboarding-page/onboarding-page.component';
 import { QaPageComponent } from './pages/qa-page/qa-page.component';
+import { MyEventsPage } from './pages/my-events-page/my-events-page.component';
+import { OrganizedEventPage } from './pages/organized-event-page/organized-event-page.component';
+import { ProfilePage } from './pages/profile-page/profile-page.component';
+import { PublicProfilePage } from './pages/public-profile-page/public-profile-page.component';
 
 const routes: Routes = [
   {
@@ -15,23 +17,37 @@ const routes: Routes = [
     component: MainPage,
   },
   {
-    path: 'home',
-    component: HomePage,
-    canActivate: [AuthGuard],
-  },
-  {
     path: 'login',
     component: LoginPage,
   },
   {
-    path: 'chat',
-    component: ChatPage,
+    path: 'events/:id',
+    component: OrganizedEventPage,
+  },
+  {
+    path: 'profile/:id',
+    component: PublicProfilePage,
+  },
+  {
+    path: 'my-profile',
+    component: ProfilePage,
     canActivate: [AuthGuard],
   },
   {
-    path: 'onboarding',
-    component: OnboardingPage,
-    canActivate: [OnboardingGuard],
+    path: 'my-events',
+    component: MyEventsPage,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: 'my-events/edit/:id',
+    component: EditEventPage,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'my-events/create',
+    component: CreateEventPage,
+    canActivate: [AuthGuard],
   },
   {
     path: 'qa',

@@ -1,0 +1,32 @@
+@import '../../../variables.scss';
+
+.wrapper {
+  display: flex;
+  width: 100vw;
+}
+
+.preview-div {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  width: inherit;
+  display: block;
+}
+
+.divider {
+  height: 0px;
+  border: 1px solid grey;
+}
+
+.chat-div {
+  display: none;
+  width: 70%;
+}
+
+@media screen and (min-width: $tablet-large) {
+  .chat-div {
+    display: block;
+  }
+  .preview-div {
+    width: 30%;
+  }
+}

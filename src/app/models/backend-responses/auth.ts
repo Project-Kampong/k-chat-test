@@ -1,23 +1,13 @@
-import { UserData } from '../data/user';
-
 export interface LoginUserResponse {
-  success: boolean;
+  userId: string;
+  username: string;
   token: string;
-  error: string;
-}
-
-export interface LogoutUserResponse {
-  success: boolean;
-  data: unknown;
+  tokenExpiration: string;
 }
 
 export interface RegisterUserResponse {
-  success: boolean;
+  userId: string;
+  username: string;
   token: string;
-  error: string;
-}
-
-export interface GetLoggedInUserResponse {
-  success: boolean;
-  data: UserData;
+  tokenExpiration: string;
 }

@@ -1,4 +1,12 @@
-<div class="wrapper">
-  <div class="text-hello">Hello. This is a main page. It is blank now, come back later! Hehe</div>
-  <button pButton type="button" label="Login" (click)="routeToLogin()"></button>
+<app-main-header></app-main-header>
+<div class="main-page-wrapper">
+  <div class="main-page-container">
+    <span class="event-title">Current Events</span>
+    <div class="events-grid">
+      <app-organized-event-card
+        *ngFor="let organizedEvent of organizedEventsArr"
+        [organizedEventDetails]="organizedEvent"
+      ></app-organized-event-card>
+    </div>
+  </div>
 </div>

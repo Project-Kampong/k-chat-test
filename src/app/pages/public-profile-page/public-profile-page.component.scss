@@ -1,0 +1,65 @@
+@import '../../../variables.scss';
+
+.public-profile-page-wrapper {
+  margin: 5% 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.profile-details-grid {
+  display: grid;
+  gap: 20px;
+  margin: 10px 0;
+  grid-template-columns: 1fr 1fr;
+}
+
+.field {
+  font-weight: 700;
+}
+.value {
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
+}
+
+.title {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.all-events-div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.all-events-grid {
+  display: grid;
+  gap: 20px;
+  margin: 10px 0;
+  grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: $tablet-small) {
+  .all-events-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: $tablet-large) {
+  .public-profile-page-wrapper {
+    margin: 5% 20%;
+  }
+
+  .all-events-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: $desktop-quad) {
+  .all-events-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <div class="preview-div" (click)="routeToChatWindow(chatroomPreviewData.chatroom_id)">
+    <img
+      class="chatroom-pic"
+      [src]="
+        chatroomPreviewData.chatroom_pic != null ? chatroomPreviewData.chatroom_pic : '../../assets/kampong-icon.ico'
+      "
+      alt="../../assets/kampong-icon.ico"
+    />
+    <div class="message-div">
+      <div class="chatroom-name">
+        {{ chatroomPreviewData.chatroom_name ? chatroomPreviewData.chatroom_name : chatroomPreviewData.nickname }}
+      </div>
+      <div class="chatroom-message">
+        {{ chatroomPreviewData.most_recent_msg.chatmessage_text }}
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+</div>
