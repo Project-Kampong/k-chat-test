@@ -2,21 +2,23 @@
   <div class="p-grid">
     <div class="p-col-2 align-vertical-center">
       <div class="p-fluid">
-        <div class="p-field">
+        <!-- <div class="p-field">
           <label for="name">Name</label>
           <input id="name" type="text" pInputText [(ngModel)]="joinRoomRequest.name" />
-        </div>
-        <div class="p-field">
+        </div> -->
+        <div>Hello {{ userName }}</div>
+        <div>You are in Don's events now</div>
+        <!-- <div class="p-field">
           <label for="room">Room ID</label>
           <input id="room" type="text" pInputText [(ngModel)]="joinRoomRequest.roomId" />
-        </div>
+        </div> -->
       </div>
 
-      <p-button label="Join" (onClick)="onJoin()"></p-button>
+      <!-- <p-button label="Join" (onClick)="onJoin()"></p-button> -->
 
       <div class="p-field">
         <label for="question">Question</label>
-        <input id="question" type="text" pInputText [(ngModel)]="questionRequest.question" />
+        <input id="question" type="text" pInputText [(ngModel)]="question" />
       </div>
       <p-button label="Send Question" (onClick)="onSendQuestion()"></p-button>
     </div>
@@ -24,7 +26,7 @@
       <p-divider layout="vertical"></p-divider>
     </div>
     <div class="p-col-9">
-      <div class="question-container">
+      <!-- <div class="question-container">
         <div *ngFor="let question of questionsResponse; let i = index">
           <p-card header="Question {{ i }}" [style]="{ width: '25rem', 'margin-bottom': '2em' }">
             <ng-template pTemplate="header"> </ng-template>
@@ -66,7 +68,7 @@
             </ng-template>
           </p-card>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

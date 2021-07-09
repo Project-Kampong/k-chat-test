@@ -1,14 +1,21 @@
 export interface JoinRoomRequest {
-  name: String;
-  roomId: String;
+  name: string;
+  roomId: string;
 }
 
 export interface QuestionRequest {
-  roomId: String;
-  question: String;
+  roomId: string;
+  question: string;
 }
 
 export interface QuestionResponse {
-  roomId: String;
-  question: String;
+  _id: string;
+  questionText: string;
+  voteCount: number;
+}
+
+export interface CreatQuestionInput {
+  userId: string;
+  displayName: string;
+  questionText: string;
 }

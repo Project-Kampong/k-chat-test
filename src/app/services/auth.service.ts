@@ -19,20 +19,28 @@ export class AuthService {
     }),
   };
   private userId: string | null = '';
+  private userName: string | null = '';
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService) {
     this.userId = localStorage.getItem('userId') ? localStorage.getItem('userId') : '';
+    this.userName = localStorage.getItem('userName') ? localStorage.getItem('userName') : '';
   }
 
   getUserId(): string {
     return this.userId ? this.userId : '';
   }
 
+  getUserName(): string {
+    return this.userName ? this.userName : '';
+  }
+
   loginUser(data: UserLoginData): Observable<LoginUserResponse> {
     return this.httpClient.post<LoginUserResponse>(this.url + '/auth/login', data, this.options).pipe(
       map((res: LoginUserResponse) => {
         localStorage.setItem('userId', res.userId);
+        localStorage.setItem('userName', res.username);
         this.userId = res.userId;
+        this.userName = res.username;
         this.cookieService.set(
           'token',
           res.token,
@@ -47,7 +55,9 @@ export class AuthService {
     return this.httpClient.post<RegisterUserResponse>(this.url + '/auth/register', data, this.options).pipe(
       map((res: RegisterUserResponse) => {
         localStorage.setItem('userId', res.userId);
+        localStorage.setItem('userName', res.username);
         this.userId = res.userId;
+        this.userName = res.username;
         this.cookieService.set(
           'token',
           res.token,
@@ -60,7 +70,9 @@ export class AuthService {
 
   logoutUser(): void {
     localStorage.removeItem('userId');
+    localStorage.removeItem('userName');
     this.userId = '';
+    this.userName = '';
     this.cookieService.delete('token');
   }
 }
