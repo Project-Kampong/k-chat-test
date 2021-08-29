@@ -15,5 +15,5 @@ jobs:
           check-latest: true
       - name: Install dependencies, check formatting and build
         run: |
-          npm install
+          npm install && \
           npm run build
